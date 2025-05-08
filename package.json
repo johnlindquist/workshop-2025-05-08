@@ -2,10 +2,14 @@
   "name": "workshop-2025-05-08-2025-05-08-initialize-monorepo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "prepare": "husky",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "lint": "pnpm biome lint .",
+    "format": "pnpm biome format --write .",
+    "check": "pnpm biome check --write ."
   },
   "keywords": [],
   "author": "",
