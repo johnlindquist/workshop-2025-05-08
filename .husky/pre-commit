@@ -1,2 +1,2 @@
 #!/bin/sh
-pnpm biome check --apply
+pnpm biome check --staged --write

@@ -8,8 +8,8 @@ This repository is a pnpm-managed monorepo for a cross-platform note-taking appl
 / (repo root)
 ├── apps/         # User-facing applications (web, mobile, VS Code extension)
 ├── backend/      # API and backend logic (Hono on Cloudflare Workers)
-├── packages/     # Shared logic, UI components, and utilities
-├── libs/         # Shared libraries, utilities, hooks, and logic
+├── packages/     # Independently versionable/publishable packages (shared logic, UI components)
+├── libs/         # Internal shared libraries, utilities, hooks, and logic (not published)
 ├── docs/         # Documentation, diagrams, and requirements
 ├── .husky/       # Git hooks (pre-commit formatting/linting)
 ├── biome.json    # Biome config (formatting/linting)
@@ -36,18 +36,18 @@ See [`docs/TECH_STACK.md`](docs/TECH_STACK.md) for full details.
    ```sh
    pnpm install
    ```
-2. **Set up Husky hooks (if not already set):**
-   ```sh
-   pnpm dlx husky install
-   ```
+2. **Husky hooks are set up automatically via the `prepare` script.**
 3. **Run formatting/linting:**
    ```sh
-   pnpm biome check --apply
+   pnpm biome check --staged --write
+   # or to check/format all files
+   pnpm biome check --write .
    ```
 4. **Develop apps/packages:**
    - Add new apps in `apps/`
    - Add backend logic in `backend/`
-   - Add shared code in `packages/` or `libs/`
+   - Add independently versionable/publishable code in `packages/`
+   - Add internal shared code in `libs/`
 
 ## Contributing
 - All code must pass Biome formatting/linting before commit (enforced by Husky).
