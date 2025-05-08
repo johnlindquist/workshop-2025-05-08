@@ -1,3 +1,2 @@
 #!/bin/sh
-pnpm biome check --apply
-echo test-hook
+pnpm biome check --staged --write
