@@ -1,6 +1,6 @@
 # Task: Set Up Backend API with Hono on Cloudflare Workers
 
-## Commit 1: feat: Scaffold backend directory structure and config
+## Commit 1: ✅ feat: Scaffold backend directory structure and config (c163006)
 **Description:**
 - Create `backend/src/` directory for backend source code.
 - Add an initial `backend/src/index.ts` entry point for the Hono app.
