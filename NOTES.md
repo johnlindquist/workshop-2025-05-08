@@ -11,7 +11,6 @@
 - UI Framework: Next.js (for web and possibly mobile via Next.js/React Native integration).
 - Styling: Tailwind CSS.
 - Backend: Hono (Cloudflare Workers, similar to Express).
-- Testing: Vitest for all tests.
 
 ## Additional Notes
 - Focus on simplicity and cross-platform usability.
