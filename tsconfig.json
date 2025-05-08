@@ -1,0 +1,23 @@
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "esnext",
+    "strict": true,
+    "noEmit": false,
+    "skipLibCheck": true
+  },
+  "include": ["apps/*", "backend", "packages/*", "libs/*"],
+  "references": [
+    { "path": "apps/*" },
+    { "path": "backend" },
+    { "path": "packages/*" },
+    { "path": "libs/*" }
+  ]
+}
