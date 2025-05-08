@@ -1,13 +1,48 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { notes } from "../mocks/notes";
 import { Card } from "../components/ui/card";
+import { useNotesStore } from "../store/notes";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const noteSchema = z.object({
+  content: z.string().min(1, "Note cannot be empty"),
+});
+
+type NoteForm = z.infer<typeof noteSchema>;
 
 export default function Home() {
+  const { notes, addNote } = useNotesStore();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<NoteForm>({ resolver: zodResolver(noteSchema) });
+
+  const onSubmit = (data: NoteForm) => {
+    addNote(data.content);
+    reset();
+  };
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <h2>Mock Notes</h2>
+        <form onSubmit={handleSubmit(onSubmit)} style={{ marginBottom: 24 }}>
+          <input
+            {...register("content")}
+            placeholder="Type a new note..."
+            className="border p-2 rounded w-full mb-2"
+          />
+          {errors.content && (
+            <div className="text-red-500 text-xs mb-2">{errors.content.message}</div>
+          )}
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+            Add Note
+          </button>
+        </form>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           {notes.map((note) => (
             <Card key={note.id} className="mb-2">
