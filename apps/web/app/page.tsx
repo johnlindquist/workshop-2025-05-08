@@ -1,10 +1,11 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import styles from "./page.module.css";
-import { Card } from "../components/ui/card";
-import { useNotesStore } from "../store/notes";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Card } from "../components/ui/card";
+import { useNotesStore } from "../store/notes";
+import styles from "./page.module.css";
 
 const noteSchema = z.object({
   content: z.string().min(1, "Note cannot be empty"),
@@ -13,7 +14,7 @@ const noteSchema = z.object({
 type NoteForm = z.infer<typeof noteSchema>;
 
 export default function Home() {
-  const { notes, addNote } = useNotesStore();
+  const { notes, addNote, editNote, deleteNote } = useNotesStore();
   const {
     register,
     handleSubmit,
@@ -21,9 +22,25 @@ export default function Home() {
     formState: { errors },
   } = useForm<NoteForm>({ resolver: zodResolver(noteSchema) });
 
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editContent, setEditContent] = useState("");
+
   const onSubmit = (data: NoteForm) => {
     addNote(data.content);
     reset();
+  };
+
+  const startEdit = (noteId: string, currentContent: string) => {
+    setEditingId(noteId);
+    setEditContent(currentContent);
+  };
+
+  const saveEdit = (noteId: string) => {
+    if (editContent.trim()) {
+      editNote(noteId, editContent);
+      setEditingId(null);
+      setEditContent("");
+    }
   };
 
   return (
@@ -46,11 +63,55 @@ export default function Home() {
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           {notes.map((note) => (
             <Card key={note.id} className="mb-2">
-              <div className="p-4">
-                <div className="font-bold">{note.content}</div>
-                <div className="text-xs text-gray-500">
-                  {new Date(note.createdAt).toLocaleString()}
-                </div>
+              <div className="p-4 flex items-center justify-between">
+                {editingId === note.id ? (
+                  <>
+                    <input
+                      value={editContent}
+                      onChange={(e) => setEditContent(e.target.value)}
+                      className="border p-2 rounded w-full mr-2"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => saveEdit(note.id)}
+                      className="bg-green-500 text-white px-2 py-1 rounded mr-2"
+                    >
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setEditingId(null)}
+                      className="bg-gray-300 text-black px-2 py-1 rounded"
+                    >
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      <div className="font-bold">{note.content}</div>
+                      <div className="text-xs text-gray-500">
+                        {new Date(note.createdAt).toLocaleString()}
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => startEdit(note.id, note.content)}
+                        className="bg-yellow-400 text-black px-2 py-1 rounded"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => deleteNote(note.id)}
+                        className="bg-red-500 text-white px-2 py-1 rounded"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </Card>
           ))}
