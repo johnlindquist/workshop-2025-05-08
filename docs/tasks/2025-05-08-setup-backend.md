@@ -12,9 +12,7 @@
 - Confirm `backend/src/index.ts` exists and is referenced in `tsconfig.json`.
 - Run `pnpm tsc --filter ./backend` to ensure TypeScript compiles with no errors.
 
----
-
-## Commit 2: feat: Initialize Hono app and basic API route
+## Commit 2: ✅ feat: Initialize Hono app and basic API route (cb02dfa)
 **Description:**
 - Install Hono and required middleware: `hono`, `@hono/zod-validator`, `@hono/jwt`, `@hono/cors`, `@hono/logger`.
 - In `backend/src/index.ts`, set up a basic Hono app with a `/health` route that returns `{ status: 'ok' }`.
