@@ -1,11 +1,25 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { notes } from "../mocks/notes";
+import { Card } from "../components/ui/card";
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      <div className="bg-blue-500 text-white p-4 rounded mb-4">Tailwind CSS is working!</div>
       <main className={styles.main}>
+        <h2>Mock Notes</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          {notes.map((note) => (
+            <Card key={note.id} className="mb-2">
+              <div className="p-4">
+                <div className="font-bold">{note.content}</div>
+                <div className="text-xs text-gray-500">
+                  {new Date(note.createdAt).toLocaleString()}
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
         <Image
           className={styles.logo}
           src="/next.svg"
