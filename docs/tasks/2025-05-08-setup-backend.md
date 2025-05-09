@@ -25,3 +25,7 @@
 ## Commit 3: ✅ feat: Integrate Cloudflare KV for note storage (e51c447)
 **Description:**
 - Add Cloudflare KV binding configuration (via `
+
+## Commit 4: ✅ test: Add Vitest unit and integration tests for API (a8cefc7)
+**Description:**
+// ... existing code ...
