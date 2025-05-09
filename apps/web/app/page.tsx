@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
@@ -6,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Card } from "../components/ui/card";
 import { useNotesStore } from "../store/notes";
-import styles from "./page.module.css";
+import type { Note } from "../mocks/notes";
 
 const noteSchema = z.object({
   content: z.string().min(1, "Note cannot be empty"),
@@ -45,8 +46,8 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-1 max-w-2xl mx-auto py-8 px-4">
         <h2>Mock Notes</h2>
         <form onSubmit={handleSubmit(onSubmit)} style={{ marginBottom: 24 }}>
           <input
@@ -62,7 +63,7 @@ export default function Home() {
           </button>
         </form>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          {notes.map((note) => (
+          {notes.map((note: Note) => (
             <Card key={note.id} className="mb-2">
               <div className="p-4 flex items-center justify-between">
                 {editingId === note.id ? (
@@ -118,7 +119,7 @@ export default function Home() {
           ))}
         </div>
         <Image
-          className={styles.logo}
+          className="mx-auto my-8"
           src="/next.svg"
           alt="Next.js logo"
           width={180}
@@ -132,15 +133,15 @@ export default function Home() {
           <li>Save and see your changes instantly.</li>
         </ol>
 
-        <div className={styles.ctas}>
+        <div className="flex gap-4 mt-8 justify-center">
           <a
-            className={styles.primary}
+            className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition"
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Image
-              className={styles.logo}
+              className="mx-0"
               src="/vercel.svg"
               alt="Vercel logomark"
               width={20}
@@ -152,13 +153,13 @@ export default function Home() {
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.secondary}
+            className="bg-gray-200 text-gray-900 px-4 py-2 rounded shadow hover:bg-gray-300 transition"
           >
             Read our docs
           </a>
         </div>
       </main>
-      <footer className={styles.footer}>
+      <footer className="w-full py-4 border-t flex justify-center gap-8 mt-8 text-sm text-gray-500 bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
