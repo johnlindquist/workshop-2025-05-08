@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Card } from "./card";
 import type { Note } from "../../mocks/notes";
+import { Card } from "./card";
 
 interface NoteCardProps {
   note: Note;

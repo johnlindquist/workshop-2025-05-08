@@ -1,6 +1,6 @@
 # Task: Implement Gothic Mock Design in Web App
 
-## Commit 1: feat: Move and integrate gothic mock components into web app
+## Commit 1: ✅ feat: Move and integrate gothic mock components into web app (35b1268)
 **Description:**
 - Move all relevant components, logic, and styles from the gothic mock (e.g., `docs/mocks/gothic.md`) into the `apps/web` folder.
 - Refactor the gothic mock code as needed to fit the structure of the web app, placing reusable UI in `apps/web/components/ui`, main app logic in `apps/web/app`, and any mock data in `apps/web/mocks` or `store`.
@@ -14,7 +14,7 @@
 
 ---
 
-## Commit 2: refactor: Modularize gothic mock into small, reusable components
+## Commit 2: ✅ refactor: Modularize gothic mock into small, reusable components (e7d2770)
 **Description:**
 - Break down the gothic mock code into small, focused components (≤200 lines each) and place them in `apps/web/components/ui` or other appropriate directories.
 - Add excessive logging to key actions (note creation, deletion, pinning, theme toggle) for observability.

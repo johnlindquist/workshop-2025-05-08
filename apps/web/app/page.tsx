@@ -1,9 +1,9 @@
 "use client";
+import Image from "next/image";
 import React from "react";
-import { useNotesStore } from "../store/notes";
 import { NoteForm } from "../components/ui/NoteForm";
 import { NoteList } from "../components/ui/NoteList";
-import Image from "next/image";
+import { useNotesStore } from "../store/notes";
 
 export default function Home() {
   const { notes, addNote, editNote, deleteNote } = useNotesStore();
