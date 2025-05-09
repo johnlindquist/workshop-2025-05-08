@@ -7,10 +7,13 @@ Your goal is to pack up files into a single file using the `repomix` cli.
 
 ## Defaults
 - Always use `-o tmp/<filename>` so that the file is saved to a `tmp/` directory within the current project.
-- Always ignore "tmp"
-- Always include token count: use `--token-count-encoding o200k_base`
-- Never include line numbers: do NOT use `--output-show-line-numbers`
-- Include ".cursor/rules/_project.mdc", but ignore other ".cursor/rules" files
+- Exclude "tmp"
+- Exclude ".cursor/rules"
+- Use token count: use `--token-count-encoding o200k_base`
+- Avoid line numbers: do NOT use `--output-show-line-numbers`
+- Include the entire project
+- Always copy to the clipboard
+
 
 ## Usage
 Usage: repomix [options] [directories...]

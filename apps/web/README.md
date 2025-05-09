@@ -44,4 +44,15 @@ pnpm --filter ./apps/web test
 ## Design Reference
 - [docs/mocks/gothic.md](../../docs/mocks/gothic.md)
 - [User Flow Diagram](../../docs/diagrams/user-interactions.md)
-- [Webpage Events](../../docs/diagrams/webpage-events.md) 
+- [Webpage Events](../../docs/diagrams/webpage-events.md)
+
+## Debugging UI Layout
+
+To enable visual debugging overlays for all major UI components, set the following environment variable:
+
+```sh
+NEXT_PUBLIC_DEBUG_UI=true pnpm --filter ./apps/web dev
+```
+
+- Colored borders and labels will appear for header, sidebar, main, note input, note grids, and note cards.
+- To disable, remove the env var or set it to false. 

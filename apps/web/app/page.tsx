@@ -1,30 +1,31 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
 import {
-  Menu,
-  Search,
-  RefreshCcw,
-  Settings2,
-  Grip,
-  UserCircle,
-  Lightbulb,
-  BellRing,
-  Archive,
-  Trash2,
-  Edit3,
-  CheckSquare,
-  Image as ImageIcon,
-  Mic,
-  Palette,
   AlertTriangle,
-  X,
-  Plus,
-  Lock,
+  Archive,
+  BellRing,
   BookOpen,
+  CheckSquare,
+  Edit3,
   Feather,
+  Grip,
+  Image as ImageIcon,
+  Lightbulb,
+  Lock,
+  Menu,
+  Mic,
   Moon,
+  Palette,
+  Plus,
+  RefreshCcw,
+  Search,
+  Settings2,
   Sun,
+  Trash2,
+  UserCircle,
+  X,
 } from "lucide-react";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
 
 const initialNotesData = [
   {
@@ -97,6 +98,8 @@ function NavItem({ icon, text, isActive, onClick, colors }: NavItemProps) {
     </li>
   );
 }
+
+const DEBUG_UI = typeof process !== "undefined" && process.env.NEXT_PUBLIC_DEBUG_UI === "true";
 
 export default function App() {
   const [notes, setNotes] = useState(initialNotesData);
@@ -220,8 +223,13 @@ export default function App() {
     >
       {/* Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-2 h-16 ${currentThemeColors.bgHeader} border-b ${currentThemeColors.borderHeader} shadow-lg shadow-stone-950/30`}
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-2 h-16 ${currentThemeColors.bgHeader} border-b ${currentThemeColors.borderHeader} shadow-lg shadow-stone-950/30 ${DEBUG_UI ? "border-4 border-yellow-500" : ""}`}
       >
+        {DEBUG_UI && (
+          <div className="absolute left-2 top-0 bg-yellow-500 text-black px-2 text-xs z-50">
+            HEADER
+          </div>
+        )}
         <div className="flex items-center">
           <button
             type="button"
@@ -286,8 +294,13 @@ export default function App() {
       <div className="flex flex-1 pt-16 overflow-hidden">
         {/* Sidebar */}
         <aside
-          className={` ${sidebarOpen ? "w-64" : "w-0"} transition-all duration-300 ease-in-out flex-shrink-0 ${currentThemeColors.bgSidebar} border-r ${currentThemeColors.borderSidebar} shadow-md shadow-stone-950/20 overflow-y-auto scrollbar-thin scrollbar-thumb-stone-700 scrollbar-track-stone-800/50`}
+          className={` ${sidebarOpen ? "w-64" : "w-0"} transition-all duration-300 ease-in-out flex-shrink-0 ${currentThemeColors.bgSidebar} border-r ${currentThemeColors.borderSidebar} shadow-md shadow-stone-950/20 overflow-y-auto scrollbar-thin scrollbar-thumb-stone-700 scrollbar-track-stone-800/50 ${DEBUG_UI ? "border-4 border-blue-500" : ""}`}
         >
+          {DEBUG_UI && (
+            <div className="absolute left-2 top-0 bg-blue-500 text-white px-2 text-xs z-50">
+              SIDEBAR
+            </div>
+          )}
           {sidebarOpen && (
             <nav className="p-2">
               <ul>
@@ -331,11 +344,18 @@ export default function App() {
           )}
         </aside>
         {/* Content Area */}
-        <main className="flex-1 flex flex-col items-center px-8 py-8 overflow-y-auto">
+        <main
+          className={`flex-1 flex flex-col items-center px-8 py-8 overflow-y-auto ${DEBUG_UI ? "border-4 border-green-500" : ""}`}
+        >
+          {DEBUG_UI && (
+            <div className="absolute left-2 top-0 bg-green-500 text-black px-2 text-xs z-50">
+              MAIN
+            </div>
+          )}
           {/* Note Input Bar */}
           <div
             ref={takeNoteRef}
-            className={`w-full max-w-2xl mb-8 rounded-xl border ${currentThemeColors.takeNoteBorder} ${currentThemeColors.takeNoteBg} shadow-lg p-6 transition-all ${isTakeNoteFocused ? "ring-2 ring-red-700" : ""}`}
+            className={`w-full max-w-2xl mb-8 rounded-xl border ${currentThemeColors.takeNoteBorder} ${currentThemeColors.takeNoteBg} shadow-lg p-6 transition-all ${isTakeNoteFocused ? "ring-2 ring-red-700" : ""} ${DEBUG_UI ? "border-4 border-pink-500 relative" : ""}`}
             onClick={() => setIsTakeNoteFocused(true)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
@@ -344,6 +364,11 @@ export default function App() {
               }
             }}
           >
+            {DEBUG_UI && (
+              <div className="absolute left-2 top-0 bg-pink-500 text-black px-2 text-xs z-50">
+                NOTE INPUT
+              </div>
+            )}
             <input
               className="w-full bg-transparent text-lg font-semibold outline-none mb-2 placeholder-stone-500"
               placeholder="Scribe a new enchantment..."
@@ -382,19 +407,38 @@ export default function App() {
             )}
           </div>
           {/* Sectioned Notes */}
-          <section className="w-full max-w-6xl">
+          <section
+            className={`w-full max-w-6xl ${DEBUG_UI ? "border-4 border-purple-500 relative" : ""}`}
+          >
+            {DEBUG_UI && (
+              <div className="absolute left-2 top-0 bg-purple-500 text-white px-2 text-xs z-50">
+                NOTES SECTION
+              </div>
+            )}
             {/* Sacred Texts (Pinned) */}
             <h2 className="mb-2 text-xs tracking-widest text-stone-400 font-semibold">
               SACRED TEXTS
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 ${DEBUG_UI ? "border-2 border-orange-500 relative" : ""}`}
+            >
+              {DEBUG_UI && (
+                <div className="absolute left-2 top-0 bg-orange-500 text-black px-2 text-xs z-50">
+                  SACRED TEXTS GRID
+                </div>
+              )}
               {filteredNotes
                 .filter((n) => n.pinned)
                 .map((note) => (
                   <div
                     key={note.id}
-                    className={`relative rounded-xl border-2 ${note.color} ${currentThemeColors.noteCardBorder} ${currentThemeColors.noteCardHoverBorder} p-6 shadow-lg transition-all`}
+                    className={`relative rounded-xl border-2 ${note.color} ${currentThemeColors.noteCardBorder} ${currentThemeColors.noteCardHoverBorder} p-6 shadow-lg transition-all ${DEBUG_UI ? "border-4 border-red-500" : ""}`}
                   >
+                    {DEBUG_UI && (
+                      <div className="absolute left-2 top-0 bg-red-500 text-white px-2 text-xs z-50">
+                        NOTE CARD
+                      </div>
+                    )}
                     <div className="absolute top-2 right-2 flex gap-2">
                       <button
                         type="button"
@@ -468,14 +512,26 @@ export default function App() {
             <h2 className="mb-2 text-xs tracking-widest text-stone-400 font-semibold">
               COMMON SCROLLS
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              className={`grid grid-cols-1 md:grid-cols-3 gap-6 ${DEBUG_UI ? "border-2 border-cyan-500 relative" : ""}`}
+            >
+              {DEBUG_UI && (
+                <div className="absolute left-2 top-0 bg-cyan-500 text-black px-2 text-xs z-50">
+                  COMMON SCROLLS GRID
+                </div>
+              )}
               {filteredNotes
                 .filter((n) => !n.pinned)
                 .map((note) => (
                   <div
                     key={note.id}
-                    className={`relative rounded-xl border-2 ${note.color} ${currentThemeColors.noteCardBorder} ${currentThemeColors.noteCardHoverBorder} p-6 shadow-lg transition-all`}
+                    className={`relative rounded-xl border-2 ${note.color} ${currentThemeColors.noteCardBorder} ${currentThemeColors.noteCardHoverBorder} p-6 shadow-lg transition-all ${DEBUG_UI ? "border-4 border-lime-500" : ""}`}
                   >
+                    {DEBUG_UI && (
+                      <div className="absolute left-2 top-0 bg-lime-500 text-black px-2 text-xs z-50">
+                        NOTE CARD
+                      </div>
+                    )}
                     <div className="absolute top-2 right-2 flex gap-2">
                       <button
                         type="button"
