@@ -1,0 +1,7 @@
+name = "backend"
+main = "dist/index.js"
+compatibility_date = "2025-05-07"
+
+[[kv_namespaces]]
+binding = "NOTES"
+id = "dev-notes-namespace" 
