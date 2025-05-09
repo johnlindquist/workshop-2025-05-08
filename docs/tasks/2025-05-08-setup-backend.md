@@ -29,3 +29,7 @@
 ## Commit 4: ✅ test: Add Vitest unit and integration tests for API (a8cefc7)
 **Description:**
 // ... existing code ...
+
+## Commit 5: ✅ chore: Add Biome config and enforce formatting with Husky (941bc1c)
+**Description:**
+// ... existing code ...

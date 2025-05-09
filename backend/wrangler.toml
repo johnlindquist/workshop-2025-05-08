@@ -1,6 +1,6 @@
 name = "backend"
-type = "javascript"
 main = "dist/index.js"
+compatibility_date = "2025-05-07"
 
 [[kv_namespaces]]
 binding = "NOTES"
