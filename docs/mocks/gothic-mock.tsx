@@ -1,11 +1,3 @@
-"use client";
-
-import { MoreVerticalIcon, RedoIcon, UndoIcon } from "@/components/gothic/CustomIcons";
-import { IconWrapper } from "@/components/gothic/IconWrapper";
-import { NavItem } from "@/components/gothic/NavItem";
-import { NoteCard } from "@/components/gothic/NoteCard";
-import { initialNotesData } from "@/lib/initial-notes";
-import type { Note } from "@/types/note";
 import {
   AlertTriangle,
   Archive,
@@ -14,31 +6,77 @@ import {
   CheckSquare,
   Edit3,
   Feather,
+  Grip,
   Image as ImageIcon,
+  Lightbulb,
   Lock,
   Menu,
   Mic,
   Moon,
   Palette,
+  Plus,
   RefreshCcw,
   Search,
   Settings2,
   Sun,
   Trash2,
   UserCircle,
+  X,
 } from "lucide-react";
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  MouseEvent as ReactMouseEvent,
-  type ChangeEvent,
-  FocusEvent,
-  type KeyboardEvent,
-} from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-export default function GothicPage() {
-  const [notes, setNotes] = useState<Note[]>(initialNotesData);
+// Sample initial notes - feel free to expand or modify
+const initialNotesData = [
+  {
+    id: "1",
+    title: "Incantations Vol. I",
+    content:
+      "Whispers of the old gods, bound in shadow and ink. Remember the verse of summoning for the equinox.",
+    pinned: true,
+    color: "bg-stone-800/70",
+  },
+  {
+    id: "2",
+    title: "Alchemical Concoctions",
+    content:
+      "The recipe for the Elixir of Night: moonshade, wolfsbane, and three drops of raven's tear. Handle with extreme caution.",
+    pinned: false,
+    color: "bg-stone-800/70",
+  },
+  {
+    id: "3",
+    title: "Cartography of Forgotten Realms",
+    content:
+      "A map fragment depicting the Sunken City of Aethel. The path is treacherous, guarded by spectral sentinels.",
+    pinned: false,
+    color: "bg-stone-800/70",
+  },
+  {
+    id: "4",
+    title: "Prophecies of the Blood Moon",
+    content:
+      "When the moon weeps crimson, the veil thins. The seventh son of a seventh son shall rise.",
+    pinned: true,
+    color: "bg-red-900/50",
+  },
+  {
+    id: "5",
+    title: "Herbalism - Darkwood Flora",
+    content:
+      "Nightshade: potent sedative. Corpseflower: attracts spirits. Shadowmoss: thrives in places untouched by light.",
+    pinned: false,
+    color: "bg-stone-800/70",
+  },
+];
+
+// Helper component for icons
+const IconWrapper = ({ icon: Icon, size = 20, className = "" }) => (
+  <Icon size={size} className={`inline-block ${className}`} />
+);
+
+// Main App Component
+function App() {
+  const [notes, setNotes] = useState(initialNotesData);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeNavItem, setActiveNavItem] = useState("Notes");
   const [isTakeNoteFocused, setIsTakeNoteFocused] = useState(false);
@@ -47,12 +85,12 @@ export default function GothicPage() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [theme, setTheme] = useState("dark"); // 'dark' or 'light' (though gothic is dark by nature)
 
-  const takeNoteRef = useRef<HTMLDivElement>(null);
+  const takeNoteRef = useRef(null);
 
   // Handle clicks outside the take note area to blur
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (takeNoteRef.current && !takeNoteRef.current.contains(event.target as Node)) {
+    function handleClickOutside(event) {
+      if (takeNoteRef.current && !takeNoteRef.current.contains(event.target)) {
         if (newNoteTitle || newNoteContent) {
           handleAddNote(); // Add note if there's content
         }
@@ -80,11 +118,11 @@ export default function GothicPage() {
     // setIsTakeNoteFocused(false); // Keep it focused if they want to add another quickly
   };
 
-  const handleDeleteNote = (id: string) => {
+  const handleDeleteNote = (id) => {
     setNotes(notes.filter((note) => note.id !== id));
   };
 
-  const togglePinNote = (id: string) => {
+  const togglePinNote = (id) => {
     setNotes(notes.map((note) => (note.id === id ? { ...note, pinned: !note.pinned } : note)));
   };
 
@@ -98,7 +136,7 @@ export default function GothicPage() {
         note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         note.content.toLowerCase().includes(searchTerm.toLowerCase()),
     )
-    .sort((a, b) => (b.pinned === a.pinned ? 0 : b.pinned ? -1 : 1)); // Pinned notes first
+    .sort((a, b) => b.pinned - a.pinned); // Pinned notes first
 
   // Add Google Fonts
   useEffect(() => {
@@ -148,7 +186,6 @@ export default function GothicPage() {
       >
         <div className="flex items-center">
           <button
-            type="button"
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}
           >
@@ -175,33 +212,29 @@ export default function GothicPage() {
               placeholder="Search thy scrolls..."
               className={`w-full h-full bg-transparent outline-none px-2 text-sm ${currentThemeColors.textPrimary} ${currentThemeColors.searchPlaceholder}`}
               value={searchTerm}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </form>
         </div>
 
         <div className="flex items-center">
           <button
-            type="button"
             className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}
           >
             <IconWrapper icon={RefreshCcw} size={20} />
           </button>
           <button
-            type="button"
             onClick={toggleTheme}
             className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}
           >
             <IconWrapper icon={theme === "dark" ? Sun : Moon} size={20} />
           </button>
           <button
-            type="button"
             className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}
           >
             <IconWrapper icon={Settings2} size={20} />
           </button>
           <button
-            type="button"
             className={`p-2 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors ml-2`}
           >
             <UserCircle size={28} className="bg-stone-700 text-stone-500 rounded-full p-0.5" />
@@ -265,13 +298,9 @@ export default function GothicPage() {
             className={`max-w-xl mx-auto mb-8 p-3 md:p-4 rounded-lg ${currentThemeColors.takeNoteBg} border ${currentThemeColors.takeNoteBorder} shadow-xl shadow-stone-950/40 transition-all duration-200`}
           >
             {!isTakeNoteFocused && !newNoteTitle && !newNoteContent ? (
-              <button
-                type="button"
-                className={`flex justify-between items-center p-2 w-full cursor-text ${currentThemeColors.textSecondary}`}
+              <div
+                className={`flex justify-between items-center p-2 cursor-text ${currentThemeColors.textSecondary}`}
                 onClick={() => setIsTakeNoteFocused(true)}
-                onKeyDown={(e: KeyboardEvent) => {
-                  if (e.key === "Enter") setIsTakeNoteFocused(true);
-                }}
               >
                 <span>Scribe a new enchantment...</span>
                 <div className="flex space-x-2">
@@ -279,7 +308,7 @@ export default function GothicPage() {
                   <IconWrapper icon={ImageIcon} className={currentThemeColors.iconColor} />
                   <IconWrapper icon={Mic} className={currentThemeColors.iconColor} />
                 </div>
-              </button>
+              </div>
             ) : (
               <div>
                 <input
@@ -287,41 +316,37 @@ export default function GothicPage() {
                   placeholder="Title of Thy Scroll"
                   className={`w-full bg-transparent outline-none p-2 mb-2 text-lg font-['EB_Garamond',_serif] font-semibold ${currentThemeColors.textPrimary} placeholder-stone-500`}
                   value={newNoteTitle}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => setNewNoteTitle(e.target.value)}
+                  onChange={(e) => setNewNoteTitle(e.target.value)}
                   onFocus={() => setIsTakeNoteFocused(true)}
                 />
                 <textarea
                   placeholder="Unleash thy thoughts here..."
-                  rows={3}
+                  rows="3"
                   className={`w-full bg-transparent outline-none p-2 text-sm resize-none scrollbar-thin scrollbar-thumb-stone-600 scrollbar-track-transparent ${currentThemeColors.textPrimary} placeholder-stone-500`}
                   value={newNoteContent}
-                  onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-                    setNewNoteContent(e.target.value)
-                  }
-                  onFocus={() => setIsTakeNoteFocused(true)}
-                  // autoFocus removed due to linting rule, consider alternative UX // Auto-focus content if title is empty
+                  onChange={(e) => setNewNoteContent(e.target.value)}
+                  onFocus={() => setIsTakeNoteFocused(true)} // Auto-focus content if title is empty
                 />
                 <div className="flex justify-between items-center mt-3">
                   <div className="flex space-x-1">
                     {[
-                      { icon: BellRing, name: "BellRingTakeNote" },
-                      { icon: Palette, name: "PaletteTakeNote" },
-                      { icon: ImageIcon, name: "ImageTakeNote" },
-                      { icon: Archive, name: "ArchiveTakeNote" },
-                      { icon: MoreVerticalIcon, name: "MoreTakeNote" },
-                      { icon: CheckSquare, name: "CheckSquareTakeNote" },
-                    ].map((item) => (
+                      BellRing,
+                      Palette,
+                      ImageIcon,
+                      Archive,
+                      MoreVerticalIcon,
+                      UndoIcon,
+                      RedoIcon,
+                    ].map((Icon, idx) => (
                       <button
-                        type="button"
-                        key={item.name}
+                        key={idx}
                         className={`p-2 rounded-full ${currentThemeColors.iconColor} ${currentThemeColors.iconHover} transition-colors`}
                       >
-                        <IconWrapper icon={item.icon} size={18} />
+                        <IconWrapper icon={Icon} size={18} />
                       </button>
                     ))}
                   </div>
                   <button
-                    type="button"
                     onClick={handleAddNote}
                     className={`px-6 py-2 rounded ${currentThemeColors.buttonBg} ${currentThemeColors.buttonText} text-sm font-semibold transition-colors`}
                   >
@@ -392,3 +417,140 @@ export default function GothicPage() {
     </div>
   );
 }
+
+// Sidebar Navigation Item Component
+const NavItem = ({ icon: Icon, text, isActive, onClick, colors }) => (
+  <li className="my-1">
+    <a
+      href="#"
+      onClick={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+      className={`flex items-center py-3 px-4 rounded-r-full transition-all duration-200 ease-in-out group
+                        ${isActive ? colors.sidebarActive : `${colors.textSecondary} ${colors.sidebarHover} hover:text-stone-100`}
+                        font-['EB_Garamond',_serif] text-sm font-medium`}
+    >
+      <IconWrapper
+        icon={Icon}
+        size={20}
+        className={`mr-5 transition-colors ${isActive ? "text-red-200" : `${colors.iconColor} group-hover:text-stone-100`}`}
+      />
+      <span className="truncate">{text}</span>
+    </a>
+  </li>
+);
+
+// Note Card Component
+const NoteCard = ({ note, onDelete, onPin, colors }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      className={`relative p-4 rounded-lg border ${note.color} ${colors.noteCardBorder} ${colors.noteCardHoverBorder} shadow-lg shadow-stone-950/30 transition-all duration-200 break-inside-avoid-column group`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        backgroundColor:
+          note.color || (theme === "dark" ? "rgba(41, 37, 36, 0.7)" : "rgba(250, 240, 230, 0.8)"),
+      }} // Use note.color or default
+    >
+      {note.title && (
+        <h3
+          className={`text-lg font-['EB_Garamond',_serif] font-semibold mb-2 ${colors.textPrimary} break-words`}
+        >
+          {note.title}
+        </h3>
+      )}
+      <p
+        className={`text-sm ${colors.textSecondary} whitespace-pre-wrap break-words leading-relaxed`}
+      >
+        {note.content}
+      </p>
+
+      <div
+        className={`absolute -top-2 -right-2 transition-opacity duration-200 ${isHovered || note.pinned ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+      >
+        <button
+          onClick={() => onPin(note.id)}
+          title={note.pinned ? "Unseal Scroll" : "Seal Scroll (Pin)"}
+          className={`p-1.5 rounded-full ${note.pinned ? "bg-red-700 text-amber-100" : `${colors.iconColor} bg-stone-700/80 hover:bg-red-800 hover:text-amber-100`} transition-colors`}
+        >
+          <IconWrapper icon={Lock} size={14} />
+        </button>
+      </div>
+
+      <div
+        className={`mt-3 pt-2 border-t ${colors.borderSidebar} border-dashed transition-opacity duration-200 ${isHovered ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+      >
+        <div className="flex items-center justify-start space-x-1">
+          {[Palette, AlertTriangle, Archive, Trash2, MoreVerticalIcon].map((Icon, idx) => (
+            <button
+              key={idx}
+              onClick={Icon === Trash2 ? () => onDelete(note.id) : null}
+              className={`p-1.5 rounded-full ${colors.iconColor} hover:text-red-400 transition-colors`}
+            >
+              <IconWrapper icon={Icon} size={16} />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Custom Icons (if needed, Lucide has most)
+const MoreVerticalIcon = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <circle cx="12" cy="12" r="1" />
+    <circle cx="12" cy="5" r="1" />
+    <circle cx="12" cy="19" r="1" />
+  </svg>
+);
+const UndoIcon = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M3 7v6h6" />
+    <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" />
+  </svg>
+);
+const RedoIcon = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M21 7v6h-6" />
+    <path d="M3 17a9 9 0 0 0 9-9 9 9 0 0 0 6 2.3L21 13" />
+  </svg>
+);
+
+export default App;

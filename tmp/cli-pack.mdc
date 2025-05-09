@@ -1,0 +1,3214 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+# File Summary
+
+## Purpose
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+## File Format
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+4. Multiple file entries, each consisting of:
+  a. A header with the file path (## File: path/to/file)
+  b. The full contents of the file in a code block
+
+## Usage Guidelines
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+## Notes
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: tmp/, .cursor/rules
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+
+## Additional Info
+
+# Directory Structure
+```
+.husky/
+  pre-commit
+apps/
+  web/
+    app/
+      globals.css
+      layout.tsx
+      page.tsx
+    components/
+      ui/
+        __tests__/
+          NoteCard.test.tsx
+          NoteForm.test.tsx
+        card.tsx
+        NoteCard.tsx
+        NoteForm.tsx
+        NoteList.tsx
+    lib/
+      utils.ts
+    mocks/
+      notes.ts
+    public/
+      file.svg
+      globe.svg
+      next.svg
+      tailwind.css
+      vercel.svg
+      window.svg
+    src/
+      app/
+        globals.css
+        theme.css
+    store/
+      notes.test.ts
+      notes.ts
+    next-env.d.ts
+    package.json
+    postcss.config.mjs
+    README.md
+    tailwind.config.js
+    tsconfig.json
+    vitest.config.ts
+    vitest.setup.ts
+  tsconfig.json
+backend/
+  tsconfig.json
+docs/
+  diagrams/
+    user-interactions.md
+    webpage-events.md
+  mocks/
+    gothic.md
+  tasks/
+    2025-05-08-gothic-mock-migration.md
+    2025-05-08-initialize-monorepo.md
+  PRD.md
+  STRUCTURE.md
+  TECH_STACK.md
+libs/
+  tsconfig.json
+packages/
+  tsconfig.json
+.biome.json
+.gitignore
+biome.json
+NOTES.md
+package.json
+pnpm-workspace.yaml
+README.md
+tsconfig.base.json
+tsconfig.json
+vitest.config.ts
+vitest.setup.ts
+```
+
+# Files
+
+## File: apps/web/public/tailwind.css
+````css
+/*! tailwindcss v4.1.6 | MIT License | https://tailwindcss.com */
+@layer properties;
+:root {
+  --color-primary: #6366f1;
+  --color-secondary: #f59e42;
+  --color-text: #1e293b;
+  --color-background: #f8fafc;
+}
+[data-theme="dark"] {
+  --color-primary: #818cf8;
+  --color-secondary: #fbbf24;
+  --color-text: #f1f5f9;
+  --color-background: #0f172a;
+}
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+}
+.\@container\/card-header {
+  container-type: inline-size;
+  container-name: card-header;
+}
+.visible {
+  visibility: visible;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.relative {
+  position: relative;
+}
+.static {
+  position: static;
+}
+.z-50 {
+  z-index: 50;
+}
+.col-start-2 {
+  grid-column-start: 2;
+}
+.row-span-2 {
+  grid-row: span 2 / span 2;
+}
+.row-start-1 {
+  grid-row-start: 1;
+}
+.mx-auto {
+  margin-inline: auto;
+}
+.mt-auto {
+  margin-top: auto;
+}
+.block {
+  display: block;
+}
+.contents {
+  display: contents;
+}
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
+.hidden {
+  display: none;
+}
+.inline-block {
+  display: inline-block;
+}
+.inline-flex {
+  display: inline-flex;
+}
+.table {
+  display: table;
+}
+.h-full {
+  height: 100%;
+}
+.h-screen {
+  height: 100vh;
+}
+.min-h-\[60px\] {
+  min-height: 60px;
+}
+.w-full {
+  width: 100%;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+.flex-grow {
+  flex-grow: 1;
+}
+.cursor-text {
+  cursor: text;
+}
+.resize-none {
+  resize: none;
+}
+.break-inside-avoid-column {
+  break-inside: avoid-column;
+}
+.auto-rows-min {
+  grid-auto-rows: min-content;
+}
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.grid-rows-\[auto_auto\] {
+  grid-template-rows: auto auto;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.items-center {
+  align-items: center;
+}
+.items-start {
+  align-items: flex-start;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.self-start {
+  align-self: flex-start;
+}
+.justify-self-end {
+  justify-self: flex-end;
+}
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.overflow-y-auto {
+  overflow-y: auto;
+}
+.rounded-full {
+  border-radius: calc(infinity * 1px);
+}
+.rounded-r-full {
+  border-top-right-radius: calc(infinity * 1px);
+  border-bottom-right-radius: calc(infinity * 1px);
+}
+.border {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+}
+.border-2 {
+  border-style: var(--tw-border-style);
+  border-width: 2px;
+}
+.border-4 {
+  border-style: var(--tw-border-style);
+  border-width: 4px;
+}
+.border-t {
+  border-top-style: var(--tw-border-style);
+  border-top-width: 1px;
+}
+.border-r {
+  border-right-style: var(--tw-border-style);
+  border-right-width: 1px;
+}
+.border-b {
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 1px;
+}
+.border-dashed {
+  --tw-border-style: dashed;
+  border-style: dashed;
+}
+.border-transparent {
+  border-color: transparent;
+}
+.bg-transparent {
+  background-color: transparent;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.font-\[\'Crimson_Text\'\,_serif\] {
+  font-family: 'Crimson Text', serif;
+}
+.font-\[\'EB_Garamond\'\,_serif\] {
+  font-family: 'EB Garamond', serif;
+}
+.font-\[\'UnifrakturCook\'\,_serif\] {
+  font-family: 'UnifrakturCook', serif;
+}
+.leading-none {
+  --tw-leading: 1;
+  line-height: 1;
+}
+.break-words {
+  overflow-wrap: break-word;
+}
+.whitespace-pre-wrap {
+  white-space: pre-wrap;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.opacity-0 {
+  opacity: 0%;
+}
+.opacity-50 {
+  opacity: 50%;
+}
+.opacity-100 {
+  opacity: 100%;
+}
+.ring-2 {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.outline {
+  outline-style: var(--tw-outline-style);
+  outline-width: 1px;
+}
+.transition {
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+}
+.transition-all {
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+}
+.transition-colors {
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+}
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+}
+.duration-150 {
+  --tw-duration: 150ms;
+  transition-duration: 150ms;
+}
+.duration-200 {
+  --tw-duration: 200ms;
+  transition-duration: 200ms;
+}
+.duration-300 {
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+}
+.outline-none {
+  --tw-outline-style: none;
+  outline-style: none;
+}
+.select-none {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.group-hover\:opacity-100 {
+  &:is(:where(.group):hover *) {
+    @media (hover: hover) {
+      opacity: 100%;
+    }
+  }
+}
+.has-data-\[slot\=card-action\]\:grid-cols-\[1fr_auto\] {
+  &:has(*[data-slot="card-action"]) {
+    grid-template-columns: 1fr auto;
+  }
+}
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
+      --tw-leading: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-outline-style: solid;
+      --tw-duration: initial;
+    }
+  }
+}
+````
+
+## File: apps/web/src/app/globals.css
+````css
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+@import "./theme.css";
+````
+
+## File: apps/web/src/app/theme.css
+````css
+:root {
+  --color-primary: #6366f1;
+  --color-secondary: #f59e42;
+  --color-text: #1e293b;
+  --color-background: #f8fafc;
+}
+[data-theme="dark"] {
+  --color-primary: #818cf8;
+  --color-secondary: #fbbf24;
+  --color-text: #f1f5f9;
+  --color-background: #0f172a;
+}
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+}
+````
+
+## File: apps/web/postcss.config.mjs
+````
+console.log("[postcss] Loading PostCSS config (mjs)");
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+    autoprefixer: {},
+  },
+};
+````
+
+## File: apps/web/tailwind.config.js
+````javascript
+console.log("[tailwind] Loading Tailwind config");
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/ui/**/*.{js,ts,jsx,tsx,mdx}",
+    "../../packages/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        "brand-primary": "#6366f1",
+        "brand-secondary": "#f59e42",
+      },
+    },
+  },
+  plugins: [],
+};
+````
+
+## File: apps/web/app/globals.css
+````css
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+@import "../src/app/theme.css";
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+````
+
+## File: apps/web/components/ui/__tests__/NoteCard.test.tsx
+````typescript
+import { fireEvent, render, screen } from "@testing-library/react";
+import React from "react";
+import { describe, expect, it, vi } from "vitest";
+import type { Note } from "../../mocks/notes";
+import { NoteCard } from "../NoteCard";
+
+const mockNote: Note = {
+  id: "1",
+  content: "Test note",
+  createdAt: new Date().toISOString(),
+};
+
+describe("NoteCard", () => {
+  it("calls onEdit with new content", () => {
+    const onEdit = vi.fn();
+    const onDelete = vi.fn();
+    render(<NoteCard note={mockNote} onEdit={onEdit} onDelete={onDelete} />);
+    fireEvent.click(screen.getByText(/edit/i));
+    fireEvent.change(screen.getByDisplayValue(/test note/i), {
+      target: { value: "Updated note" },
+    });
+    fireEvent.click(screen.getByText(/save/i));
+    expect(onEdit).toHaveBeenCalledWith("1", "Updated note");
+  });
+
+  it("calls onDelete when delete is clicked", () => {
+    const onEdit = vi.fn();
+    const onDelete = vi.fn();
+    render(<NoteCard note={mockNote} onEdit={onEdit} onDelete={onDelete} />);
+    fireEvent.click(screen.getByText(/delete/i));
+    expect(onDelete).toHaveBeenCalledWith("1");
+  });
+});
+````
+
+## File: apps/web/components/ui/__tests__/NoteForm.test.tsx
+````typescript
+import { fireEvent, render, screen } from "@testing-library/react";
+import React from "react";
+import { describe, expect, it, vi } from "vitest";
+import { NoteForm } from "../NoteForm";
+
+describe("NoteForm", () => {
+  it("calls onAdd with note content", async () => {
+    const onAdd = vi.fn();
+    render(<NoteForm onAdd={onAdd} />);
+    await fireEvent.change(screen.getByPlaceholderText(/type a new note/i), {
+      target: { value: "Hello world" },
+    });
+    await fireEvent.click(screen.getByText(/add note/i));
+    expect(onAdd).toHaveBeenCalledWith("Hello world");
+  });
+
+  it("shows validation error for empty note", async () => {
+    const onAdd = vi.fn();
+    render(<NoteForm onAdd={onAdd} />);
+    await fireEvent.click(screen.getByText(/add note/i));
+    expect(await screen.findByText(/cannot be empty/i)).toBeInTheDocument();
+    expect(onAdd).not.toHaveBeenCalled();
+  });
+});
+````
+
+## File: apps/web/components/ui/NoteList.tsx
+````typescript
+import React from "react";
+import type { Note } from "../../mocks/notes";
+import { NoteCard } from "./NoteCard";
+
+interface NoteListProps {
+  notes: Note[];
+  onEdit: (id: string, content: string) => void;
+  onDelete: (id: string) => void;
+}
+
+export function NoteList({ notes, onEdit, onDelete }: NoteListProps) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      {notes.map((note) => (
+        <NoteCard key={note.id} note={note} onEdit={onEdit} onDelete={onDelete} />
+      ))}
+    </div>
+  );
+}
+````
+
+## File: apps/web/mocks/notes.ts
+````typescript
+export type Note = {
+    id: string;
+    content: string;
+    createdAt: string;
+};
+
+export const notes: Note[] = [
+    {
+        id: '1',
+        content: 'First mock note',
+        createdAt: new Date().toISOString(),
+    },
+    {
+        id: '2',
+        content: 'Second mock note',
+        createdAt: new Date().toISOString(),
+    },
+];
+````
+
+## File: apps/web/public/file.svg
+````
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="24" height="24" rx="2" fill="#e5e7eb" stroke="#111" stroke-width="2"/>
+  <path d="M10 12h12M10 16h12M10 20h8" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+</svg>
+````
+
+## File: apps/web/public/globe.svg
+````
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="16" cy="16" r="14" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
+  <ellipse cx="16" cy="16" rx="10" ry="14" fill="none" stroke="#0369a1" stroke-width="2"/>
+  <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="#0369a1" stroke-width="2"/>
+</svg>
+````
+
+## File: apps/web/public/next.svg
+````
+<svg width="180" height="38" viewBox="0 0 180 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M36.5 0H0V38H36.5V0Z" fill="#000"/>
+  <text x="50" y="28" font-size="24" fill="#000">Next.js</text>
+</svg>
+````
+
+## File: apps/web/public/vercel.svg
+````
+<svg width="100" height="24" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="12,2 24,22 0,22" fill="#000"/>
+  <text x="30" y="18" font-size="16" fill="#000">Vercel</text>
+</svg>
+````
+
+## File: apps/web/public/window.svg
+````
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="8" width="24" height="16" rx="2" fill="#f3f4f6" stroke="#111" stroke-width="2"/>
+  <rect x="8" y="12" width="16" height="8" rx="1" fill="#fff" stroke="#111" stroke-width="1.5"/>
+</svg>
+````
+
+## File: apps/web/store/notes.test.ts
+````typescript
+import { beforeEach, describe, expect, it } from "vitest";
+import { useNotesStore } from "./notes";
+
+// Helper to reset Zustand store state between tests
+beforeEach(() => {
+  useNotesStore.setState({ notes: [] });
+});
+
+describe("useNotesStore", () => {
+  it("adds a note", () => {
+    useNotesStore.getState().addNote("Test note");
+    const notes = useNotesStore.getState().notes;
+    expect(notes.length).toBe(1);
+    expect(notes[0].content).toBe("Test note");
+  });
+
+  it("edits a note", () => {
+    useNotesStore.getState().addNote("Original");
+    const id = useNotesStore.getState().notes[0].id;
+    useNotesStore.getState().editNote(id, "Updated");
+    expect(useNotesStore.getState().notes[0].content).toBe("Updated");
+  });
+
+  it("deletes a note", () => {
+    useNotesStore.getState().addNote("To delete");
+    const id = useNotesStore.getState().notes[0].id;
+    useNotesStore.getState().deleteNote(id);
+    expect(useNotesStore.getState().notes.length).toBe(0);
+  });
+});
+````
+
+## File: apps/web/next-env.d.ts
+````typescript
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.
+````
+
+## File: apps/web/README.md
+````markdown
+# Web App: Gothic Mock Note-Taking UI
+
+This app implements the **Gothic Mock** design for a simple, fast, and accessible note-taking experience.
+
+## Features
+- Create, edit, and delete notes
+- (Planned) Pin notes, search, theme toggle
+- Keyboard-friendly, responsive UI
+- State managed with Zustand
+- Form validation with zod + react-hook-form
+- Console logging for all note actions
+
+## Tech Stack
+- Next.js 14+ (App Router)
+- Tailwind CSS, shadcn/ui
+- Zustand, zod, react-hook-form
+- Vitest (unit tests)
+
+## File Structure
+- Main page: `app/page.tsx`
+- UI components: `components/ui/`
+- Store: `store/notes.ts`
+- Mock data: `mocks/notes.ts`
+- Tests: `components/ui/__tests__/`, `store/notes.test.ts`
+
+## Running Locally
+```sh
+pnpm install
+pnpm --filter ./apps/web dev
+```
+- Visit http://localhost:3000 (or next available port)
+
+## Development
+- Edit UI in `components/ui/`
+- Add logic to `store/notes.ts`
+- All actions are logged to the browser console for observability
+
+## Testing
+```sh
+pnpm --filter ./apps/web test
+```
+- All features are covered by Vitest tests
+
+## Design Reference
+- [docs/mocks/gothic.md](../../docs/mocks/gothic.md)
+- [User Flow Diagram](../../docs/diagrams/user-interactions.md)
+- [Webpage Events](../../docs/diagrams/webpage-events.md)
+
+## Debugging UI Layout
+
+To enable visual debugging overlays for all major UI components, set the following environment variable:
+
+```sh
+NEXT_PUBLIC_DEBUG_UI=true pnpm --filter ./apps/web dev
+```
+
+- Colored borders and labels will appear for header, sidebar, main, note input, note grids, and note cards.
+- To disable, remove the env var or set it to false.
+````
+
+## File: apps/web/tsconfig.json
+````json
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", "postcss.config.*", "tailwind.config.*"]
+}
+````
+
+## File: apps/tsconfig.json
+````json
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["src"]
+}
+````
+
+## File: backend/tsconfig.json
+````json
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["src"]
+}
+````
+
+## File: docs/diagrams/user-interactions.md
+````markdown
+```mermaid
+graph TD
+  userWeb["Web User"]
+  webUI["Web UI (Next.js)"]
+  backend["Backend API (Hono on Cloudflare Workers)"]
+  storage["Cloudflare KV (Note Storage)"]
+
+  %% User initiates actions
+  userWeb -- "Add Note" --> webUI
+  userWeb -- "Edit Note" --> webUI
+  userWeb -- "Delete Note" --> webUI
+  userWeb -- "View Notes" --> webUI
+
+  %% UI sends actions to backend
+  webUI -- "POST /notes (Add)" --> backend
+  webUI -- "PUT /notes/:id (Edit)" --> backend
+  webUI -- "DELETE /notes/:id (Delete)" --> backend
+  webUI -- "GET /notes (Fetch)" --> backend
+
+  %% Backend interacts with storage
+  backend -- "Store/Retrieve/Update/Delete Note" --> storage
+
+  %% Backend returns results to UI
+  backend -- "Updated Notes List" --> webUI
+
+  %% UI updates user
+  webUI -- "Display Notes" --> userWeb
+```
+````
+
+## File: docs/diagrams/webpage-events.md
+````markdown
+```mermaid
+graph TD
+  pageLoad["Page Loads"]
+  fetchNotes["Fetch Notes from Backend"]
+  displayNotes["Display Notes List"]
+  userType["User Types Note"]
+  userSubmit["User Submits Note"]
+  addNote["Add Note to Backend"]
+  noteAdded["Note Added to List"]
+  userEdit["User Edits Note"]
+  editNote["Edit Note in Backend"]
+  noteEdited["Note Updated in List"]
+  userDelete["User Deletes Note"]
+  deleteNote["Delete Note in Backend"]
+  noteDeleted["Note Removed from List"]
+  syncNotes["Notes Synced"]
+  error["Display Error Message"]
+
+  pageLoad --> fetchNotes
+  fetchNotes --> displayNotes
+  userType --> userSubmit
+  userSubmit --> addNote
+  addNote --> noteAdded
+  noteAdded --> syncNotes
+  userEdit --> editNote
+  editNote --> noteEdited
+  noteEdited --> syncNotes
+  userDelete --> deleteNote
+  deleteNote --> noteDeleted
+  noteDeleted --> syncNotes
+
+  fetchNotes -- "Error" --> error
+  addNote -- "Error" --> error
+  editNote -- "Error" --> error
+  deleteNote -- "Error" --> error
+```
+````
+
+## File: docs/mocks/gothic.md
+````markdown
+import React, { useState, useEffect, useRef } from 'react';
+import {
+    Menu, Search, RefreshCcw, Settings2, Grip, UserCircle,
+    Lightbulb, BellRing, Archive, Trash2, Edit3, CheckSquare,
+    Image as ImageIcon, Mic, Palette, AlertTriangle, X, Plus, Lock, BookOpen, Feather, Moon, Sun
+} from 'lucide-react';
+
+// Sample initial notes - feel free to expand or modify
+const initialNotesData = [
+    { id: '1', title: 'Incantations Vol. I', content: 'Whispers of the old gods, bound in shadow and ink. Remember the verse of summoning for the equinox.', pinned: true, color: 'bg-stone-800/70' },
+    { id: '2', title: 'Alchemical Concoctions', content: 'The recipe for the Elixir of Night: moonshade, wolfsbane, and three drops of raven\'s tear. Handle with extreme caution.', pinned: false, color: 'bg-stone-800/70' },
+    { id: '3', title: 'Cartography of Forgotten Realms', content: 'A map fragment depicting the Sunken City of Aethel. The path is treacherous, guarded by spectral sentinels.', pinned: false, color: 'bg-stone-800/70' },
+    { id: '4', title: 'Prophecies of the Blood Moon', content: 'When the moon weeps crimson, the veil thins. The seventh son of a seventh son shall rise.', pinned: true, color: 'bg-red-900/50' },
+    { id: '5', title: 'Herbalism - Darkwood Flora', content: 'Nightshade: potent sedative. Corpseflower: attracts spirits. Shadowmoss: thrives in places untouched by light.', pinned: false, color: 'bg-stone-800/70' },
+];
+
+// Helper component for icons
+const IconWrapper = ({ icon: Icon, size = 20, className = "" }) => (
+    <Icon size={size} className={`inline-block ${className}`} />
+);
+
+// Main App Component
+function App() {
+    const [notes, setNotes] = useState(initialNotesData);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [activeNavItem, setActiveNavItem] = useState('Notes');
+    const [isTakeNoteFocused, setIsTakeNoteFocused] = useState(false);
+    const [newNoteTitle, setNewNoteTitle] = useState('');
+    const [newNoteContent, setNewNoteContent] = useState('');
+    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [theme, setTheme] = useState('dark'); // 'dark' or 'light' (though gothic is dark by nature)
+
+    const takeNoteRef = useRef(null);
+
+    // Handle clicks outside the take note area to blur
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (takeNoteRef.current && !takeNoteRef.current.contains(event.target)) {
+                if (newNoteTitle || newNoteContent) {
+                    handleAddNote(); // Add note if there's content
+                }
+                setIsTakeNoteFocused(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [newNoteTitle, newNoteContent]);
+
+
+    const handleAddNote = () => {
+        if (newNoteTitle.trim() === '' && newNoteContent.trim() === '') return;
+        const newNote = {
+            id: Date.now().toString(),
+            title: newNoteTitle || "Untitled Scroll",
+            content: newNoteContent,
+            pinned: false,
+            color: 'bg-stone-800/70', // Default new note color
+        };
+        setNotes(prevNotes => [newNote, ...prevNotes]);
+        setNewNoteTitle('');
+        setNewNoteContent('');
+        // setIsTakeNoteFocused(false); // Keep it focused if they want to add another quickly
+    };
+
+    const handleDeleteNote = (id) => {
+        setNotes(notes.filter(note => note.id !== id));
+    };
+
+    const togglePinNote = (id) => {
+        setNotes(notes.map(note => note.id === id ? { ...note, pinned: !note.pinned } : note));
+    };
+    
+    const toggleTheme = () => {
+        setTheme(currentTheme => currentTheme === 'dark' ? 'light' : 'dark');
+    }
+
+    const filteredNotes = notes
+        .filter(note =>
+            note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            note.content.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .sort((a, b) => (b.pinned - a.pinned)); // Pinned notes first
+
+
+    // Add Google Fonts
+    useEffect(() => {
+        const link = document.createElement('link');
+        link.href = "https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap";
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+        return () => {
+            document.head.removeChild(link);
+        }
+    }, []);
+    
+    const currentThemeColors = {
+        bgBody: theme === 'dark' ? 'bg-stone-950' : 'bg-amber-50',
+        textPrimary: theme === 'dark' ? 'text-stone-200' : 'text-stone-800',
+        textSecondary: theme === 'dark' ? 'text-stone-400' : 'text-stone-600',
+        bgHeader: theme === 'dark' ? 'bg-stone-900/80 backdrop-blur-md' : 'bg-amber-100/80 backdrop-blur-md',
+        borderHeader: theme === 'dark' ? 'border-stone-700' : 'border-amber-300',
+        bgSidebar: theme === 'dark' ? 'bg-stone-900' : 'bg-amber-100',
+        borderSidebar: theme === 'dark' ? 'border-stone-700' : 'border-amber-300',
+        sidebarHover: theme === 'dark' ? 'hover:bg-stone-800' : 'hover:bg-amber-200',
+        sidebarActive: theme === 'dark' ? 'bg-red-900/70 text-red-100' : 'bg-red-700 text-amber-50',
+        iconColor: theme === 'dark' ? 'text-stone-400' : 'text-stone-500',
+        iconHover: theme === 'dark' ? 'hover:text-stone-100' : 'hover:text-stone-900',
+        searchBg: theme === 'dark' ? 'bg-stone-800/50' : 'bg-amber-200/50',
+        searchFocusBg: theme === 'dark' ? 'bg-stone-700/70' : 'bg-amber-200/90',
+        searchPlaceholder: theme === 'dark' ? 'placeholder-stone-500' : 'placeholder-stone-400',
+        takeNoteBg: theme === 'dark' ? 'bg-stone-900' : 'bg-amber-100',
+        takeNoteBorder: theme === 'dark' ? 'border-stone-700' : 'border-amber-400',
+        noteCardBg: theme === 'dark' ? 'bg-stone-800/70' : 'bg-amber-100/80',
+        noteCardBorder: theme === 'dark' ? 'border-stone-700/50' : 'border-amber-300',
+        noteCardHoverBorder: theme === 'dark' ? 'hover:border-red-700/70' : 'hover:border-red-500/70',
+        buttonBg: theme === 'dark' ? 'bg-stone-700 hover:bg-stone-600' : 'bg-stone-600 hover:bg-stone-700',
+        buttonText: theme === 'dark' ? 'text-stone-200' : 'text-amber-50',
+    };
+
+
+    return (
+        <div className={`flex flex-col h-screen font-['Crimson_Text',_serif] ${currentThemeColors.bgBody} ${currentThemeColors.textPrimary} overflow-hidden`}>
+            {/* Header */}
+            <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-2 h-16 ${currentThemeColors.bgHeader} border-b ${currentThemeColors.borderHeader} shadow-lg shadow-stone-950/30`}>
+                <div className="flex items-center">
+                    <button onClick={() => setSidebarOpen(!sidebarOpen)} className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}>
+                        <IconWrapper icon={Menu} size={24} />
+                    </button>
+                    <IconWrapper icon={BookOpen} size={32} className="mx-2 text-red-700" />
+                    <h1 className="text-2xl font-['UnifrakturCook',_serif] text-red-500 select-none">Grimoire Scribe</h1>
+                </div>
+
+                <div className="flex-grow max-w-2xl mx-4">
+                    <form className={`flex items-center w-full h-10 ${currentThemeColors.searchBg} rounded-lg border border-transparent focus-within:border-red-700 focus-within:${currentThemeColors.searchFocusBg} transition-all`}>
+                        <button type="submit" className={`p-2 ${currentThemeColors.iconColor} ${currentThemeColors.iconHover}`}>
+                            <IconWrapper icon={Search} size={20} />
+                        </button>
+                        <input
+                            type="search"
+                            placeholder="Search thy scrolls..."
+                            className={`w-full h-full bg-transparent outline-none px-2 text-sm ${currentThemeColors.textPrimary} ${currentThemeColors.searchPlaceholder}`}
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </form>
+                </div>
+
+                <div className="flex items-center">
+                    <button className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}>
+                        <IconWrapper icon={RefreshCcw} size={20} />
+                    </button>
+                    <button onClick={toggleTheme} className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}>
+                        <IconWrapper icon={theme === 'dark' ? Sun : Moon} size={20} />
+                    </button>
+                    <button className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}>
+                        <IconWrapper icon={Settings2} size={20} />
+                    </button>
+                    <button className={`p-2 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors ml-2`}>
+                        <UserCircle size={28} className="bg-stone-700 text-stone-500 rounded-full p-0.5" />
+                    </button>
+                </div>
+            </header>
+
+            {/* Main Area */}
+            <div className="flex flex-1 pt-16 overflow-hidden">
+                {/* Sidebar */}
+                <aside className={` ${sidebarOpen ? 'w-64' : 'w-0'} transition-all duration-300 ease-in-out flex-shrink-0 ${currentThemeColors.bgSidebar} border-r ${currentThemeColors.borderSidebar} shadow-md shadow-stone-950/20 overflow-y-auto scrollbar-thin scrollbar-thumb-stone-700 scrollbar-track-stone-800/50`}>
+                    {sidebarOpen && (
+                        <nav className="p-2">
+                            <ul>
+                                {['Notes', 'Reminders', 'Archive', 'Trash'].map(item => (
+                                    <NavItem
+                                        key={item}
+                                        icon={item === 'Notes' ? Feather : item === 'Reminders' ? BellRing : item === 'Archive' ? Archive : Trash2}
+                                        text={item}
+                                        isActive={activeNavItem === item}
+                                        onClick={() => setActiveNavItem(item)}
+                                        colors={currentThemeColors}
+                                    />
+                                ))}
+                                <li className={`my-2 border-t ${currentThemeColors.borderSidebar}`}></li>
+                                 <NavItem
+                                    key="Edit Labels"
+                                    icon={Edit3}
+                                    text="Edit Glyphs"
+                                    isActive={activeNavItem === "Edit Glyphs"}
+                                    onClick={() => setActiveNavItem("Edit Glyphs")}
+                                    colors={currentThemeColors}
+                                />
+                            </ul>
+                            <div className={`mt-auto p-4 text-xs ${currentThemeColors.textSecondary} border-t ${currentThemeColors.borderSidebar}`}>
+                                <p>&copy; {new Date().getFullYear()} Grimoire Scribe. All rights reserved to the shadows.</p>
+                            </div>
+                        </nav>
+                    )}
+                </aside>
+
+                {/* Content Area */}
+                <main className="flex-1 p-4 md:p-8 overflow-y-auto scrollbar-thin scrollbar-thumb-stone-700 scrollbar-track-transparent">
+                    <div ref={takeNoteRef} className={`max-w-xl mx-auto mb-8 p-3 md:p-4 rounded-lg ${currentThemeColors.takeNoteBg} border ${currentThemeColors.takeNoteBorder} shadow-xl shadow-stone-950/40 transition-all duration-200`}>
+                        {!isTakeNoteFocused && !newNoteTitle && !newNoteContent ? (
+                            <div
+                                className={`flex justify-between items-center p-2 cursor-text ${currentThemeColors.textSecondary}`}
+                                onClick={() => setIsTakeNoteFocused(true)}
+                            >
+                                <span>Scribe a new enchantment...</span>
+                                <div className="flex space-x-2">
+                                    <IconWrapper icon={CheckSquare} className={currentThemeColors.iconColor} />
+                                    <IconWrapper icon={ImageIcon} className={currentThemeColors.iconColor} />
+                                    <IconWrapper icon={Mic} className={currentThemeColors.iconColor} />
+                                </div>
+                            </div>
+                        ) : (
+                            <div>
+                                <input
+                                    type="text"
+                                    placeholder="Title of Thy Scroll"
+                                    className={`w-full bg-transparent outline-none p-2 mb-2 text-lg font-['EB_Garamond',_serif] font-semibold ${currentThemeColors.textPrimary} placeholder-stone-500`}
+                                    value={newNoteTitle}
+                                    onChange={(e) => setNewNoteTitle(e.target.value)}
+                                    onFocus={() => setIsTakeNoteFocused(true)}
+                                />
+                                <textarea
+                                    placeholder="Unleash thy thoughts here..."
+                                    rows="3"
+                                    className={`w-full bg-transparent outline-none p-2 text-sm resize-none scrollbar-thin scrollbar-thumb-stone-600 scrollbar-track-transparent ${currentThemeColors.textPrimary} placeholder-stone-500`}
+                                    value={newNoteContent}
+                                    onChange={(e) => setNewNoteContent(e.target.value)}
+                                    onFocus={() => setIsTakeNoteFocused(true)}
+                                    autoFocus={isTakeNoteFocused && !newNoteTitle} // Auto-focus content if title is empty
+                                />
+                                <div className="flex justify-between items-center mt-3">
+                                    <div className="flex space-x-1">
+                                        {[BellRing, Palette, ImageIcon, Archive, MoreVerticalIcon, UndoIcon, RedoIcon].map((Icon, idx) => (
+                                            <button key={idx} className={`p-2 rounded-full ${currentThemeColors.iconColor} ${currentThemeColors.iconHover} transition-colors`}>
+                                                <IconWrapper icon={Icon} size={18} />
+                                            </button>
+                                        ))}
+                                    </div>
+                                    <button
+                                        onClick={handleAddNote}
+                                        className={`px-6 py-2 rounded ${currentThemeColors.buttonBg} ${currentThemeColors.buttonText} text-sm font-semibold transition-colors`}
+                                    >
+                                        Seal Scroll
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Notes Grid */}
+                    {filteredNotes.length > 0 ? (
+                        <div className="pb-16">
+                            {filteredNotes.filter(n => n.pinned).length > 0 && (
+                                <>
+                                    <h2 className={`text-xs ${currentThemeColors.textSecondary} uppercase font-semibold tracking-wider mb-3 ml-1`}>Sacred Texts</h2>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
+                                        {filteredNotes.filter(note => note.pinned).map(note => (
+                                            <NoteCard key={note.id} note={note} onDelete={handleDeleteNote} onPin={togglePinNote} colors={currentThemeColors} />
+                                        ))}
+                                    </div>
+                                </>
+                            )}
+                            {filteredNotes.filter(n => !n.pinned).length > 0 && (
+                                <>
+                                   <h2 className={`text-xs ${currentThemeColors.textSecondary} uppercase font-semibold tracking-wider mb-3 ml-1`}>Common Scrolls</h2>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                        {filteredNotes.filter(note => !note.pinned).map(note => (
+                                            <NoteCard key={note.id} note={note} onDelete={handleDeleteNote} onPin={togglePinNote} colors={currentThemeColors} />
+                                        ))}
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    ) : (
+                        <div className={`text-center py-16 ${currentThemeColors.textSecondary}`}>
+                            <IconWrapper icon={Archive} size={48} className="mx-auto mb-4 opacity-50" />
+                            <p className="text-lg">The archives are barren.</p>
+                            <p>No scrolls found matching thy query, or perhaps all have turned to dust.</p>
+                        </div>
+                    )}
+                </main>
+            </div>
+        </div>
+    );
+}
+
+// Sidebar Navigation Item Component
+const NavItem = ({ icon: Icon, text, isActive, onClick, colors }) => (
+    <li className="my-1">
+        <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); onClick(); }}
+            className={`flex items-center py-3 px-4 rounded-r-full transition-all duration-200 ease-in-out group
+                        ${isActive ? colors.sidebarActive : `${colors.textSecondary} ${colors.sidebarHover} hover:text-stone-100`}
+                        font-['EB_Garamond',_serif] text-sm font-medium`}
+        >
+            <IconWrapper icon={Icon} size={20} className={`mr-5 transition-colors ${isActive ? 'text-red-200' : `${colors.iconColor} group-hover:text-stone-100`}`} />
+            <span className="truncate">{text}</span>
+        </a>
+    </li>
+);
+
+// Note Card Component
+const NoteCard = ({ note, onDelete, onPin, colors }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+        <div
+            className={`relative p-4 rounded-lg border ${note.color} ${colors.noteCardBorder} ${colors.noteCardHoverBorder} shadow-lg shadow-stone-950/30 transition-all duration-200 break-inside-avoid-column group`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{ backgroundColor: note.color || (theme === 'dark' ? 'rgba(41, 37, 36, 0.7)' : 'rgba(250, 240, 230, 0.8)') }} // Use note.color or default
+        >
+            {note.title && <h3 className={`text-lg font-['EB_Garamond',_serif] font-semibold mb-2 ${colors.textPrimary} break-words`}>{note.title}</h3>}
+            <p className={`text-sm ${colors.textSecondary} whitespace-pre-wrap break-words leading-relaxed`}>{note.content}</p>
+
+            <div className={`absolute -top-2 -right-2 transition-opacity duration-200 ${isHovered || note.pinned ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                <button
+                    onClick={() => onPin(note.id)}
+                    title={note.pinned ? "Unseal Scroll" : "Seal Scroll (Pin)"}
+                    className={`p-1.5 rounded-full ${note.pinned ? 'bg-red-700 text-amber-100' : `${colors.iconColor} bg-stone-700/80 hover:bg-red-800 hover:text-amber-100`} transition-colors`}
+                >
+                    <IconWrapper icon={Lock} size={14} />
+                </button>
+            </div>
+
+            <div className={`mt-3 pt-2 border-t ${colors.borderSidebar} border-dashed transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                <div className="flex items-center justify-start space-x-1">
+                    {[Palette, AlertTriangle, Archive, Trash2, MoreVerticalIcon].map((Icon, idx) => (
+                         <button key={idx} onClick={Icon === Trash2 ? () => onDelete(note.id) : null} className={`p-1.5 rounded-full ${colors.iconColor} hover:text-red-400 transition-colors`}>
+                            <IconWrapper icon={Icon} size={16} />
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+// Custom Icons (if needed, Lucide has most)
+const MoreVerticalIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/>
+  </svg>
+);
+const UndoIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/>
+  </svg>
+);
+const RedoIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 0 9-9 9 9 0 0 0 6 2.3L21 13"/>
+  </svg>
+);
+
+
+export default App;
+````
+
+## File: docs/tasks/2025-05-08-initialize-monorepo.md
+````markdown
+# Task: Initialize Monorepo Structure with pnpm Workspaces
+
+## Commit 1: chore: Create monorepo directory structure and root config files
+**Description:**
+Create the foundational directory structure at the root of the repository as described in `docs/STRUCTURE.md` and `docs/TECH_STACK.md`. Add the following folders: `apps/`, `backend/`, `packages/`, `libs/`, and `docs/` (if not already present). Add root configuration files: `pnpm-workspace.yaml`, `tsconfig.json`, and `.biome.json`. Ensure all folders are empty except for a placeholder `.gitkeep` file if needed. Reference:
+- `docs/STRUCTURE.md` ("Example Directory Structure")
+- `docs/TECH_STACK.md` ("Monorepo managed with pnpm workspaces")
+
+**Verification:**
+- Run `ls -1` at the root and confirm the presence of `apps/`, `backend/`, `packages/`, `libs/`, `docs/`, `pnpm-workspace.yaml`, `tsconfig.json`, `.biome.json`.
+- Open each directory to confirm it exists and is empty (except for `.gitkeep` if used).
+
+---
+
+## Commit 2: chore: Initialize pnpm workspace and add workspace config
+**Description:**
+Run `pnpm init` at the root to create a `package.json`. Add a `pnpm-workspace.yaml` file listing `apps/*`, `backend`, `packages/*`, and `libs/*` as workspaces. Reference:
+- `docs/STRUCTURE.md` ("Monorepo Layout")
+- `docs/TECH_STACK.md` ("Monorepo managed with pnpm workspaces")
+
+**Verification:**
+- Confirm `package.json` exists at the root with valid metadata.
+- Confirm `pnpm-workspace.yaml` includes all workspace globs.
+- Run `pnpm install` and verify no errors.
+
+---
+
+## Commit 3: chore: Add and configure root TypeScript and Biome configs
+**Description:**
+Create a root `tsconfig.json` with references to all workspace folders (`apps/*`, `backend`, `packages/*`, `libs/*`). Add a root `.biome.json` with formatting and linting rules as described in `docs/TECH_STACK.md`. Reference:
+- `docs/STRUCTURE.md` ("Keep configuration files at the root")
+- `docs/TECH_STACK.md` ("Formatting/Linting: Biome")
+
+**Verification:**
+- Confirm `tsconfig.json` and `.biome.json` exist at the root.
+- Open both files and verify they contain workspace references and formatting/linting rules, respectively.
+
+---
+
+## Commit 4: chore: Set up Husky pre-commit hook for Biome formatting
+**Description:**
+Install Husky as a dev dependency in the root workspace. Add a pre-commit hook that runs `pnpm biome check --apply` (or equivalent) to enforce formatting before commits. Reference:
+- `docs/TECH_STACK.md` ("Formatting: Biome (enforced with pre-commit git hooks)")
+
+**Verification:**
+- Confirm `.husky/` directory exists at the root with a `pre-commit` file.
+- Make a test commit with a formatting violation and verify the hook prevents the commit until formatting is fixed.
+
+---
+
+## Commit 5: docs: Document monorepo structure and setup in README
+**Description:**
+Create or update `README.md` at the root to describe the monorepo structure, workspace layout, and initial setup steps. Reference the structure in `docs/STRUCTURE.md` and the stack in `docs/TECH_STACK.md`.
+
+**Verification:**
+- Open `README.md` and confirm it documents the directory structure, workspace usage, and setup commands (`pnpm install`, etc.).
+- Ask a new contributor to follow the README and confirm they can set up the repo as described.
+
+---
+````
+
+## File: docs/PRD.md
+````markdown
+# Product Requirements Document (PRD)
+
+## 1. Core Functionality & Purpose
+- A simple note-taking app inspired by Google Keep, but less complex.
+- Should be accessible on web, mobile, and as a VS Code extension.
+- Focus on simplicity and cross-platform usability.
+- Primary problem solved: Provide a lightweight, accessible note-taking solution across multiple platforms.
+
+## 2. Key Technical Goals & Scope
+- Monorepo managed with `pnpm` workspaces.
+- Hosted on Cloudflare.
+- Language: TypeScript.
+- UI Framework: Next.js (for web and possibly mobile via Next.js/React Native integration).
+- Styling: Tailwind CSS.
+- Backend: Hono (Cloudflare Workers, similar to Express).
+- Testing: Vitest for all tests.
+- Prioritize good test coverage from the start.
+- Prefer Biome for formatting and want git hooks set up to enforce formatting before pushing.
+- Out of scope: <!-- TODO: What features or platforms are explicitly out of scope for the current development cycle? -->
+
+## 3. User Interaction & Technical Design
+- Primary user types: Web users, mobile users, VS Code extension users.
+- Interaction methods: Web UI, mobile UI, VS Code extension interface.
+<!-- TODO: Are there any available UI mockups, API contracts, or user flows? If so, please provide or reference them. -->
+
+## 4. Essential Features & Implementation Details
+- Must-have functionalities:
+  - Create, edit, and delete notes.
+  - Sync notes across platforms (web, mobile, VS Code extension).
+  - Simple, intuitive UI.
+- High-level implementation considerations:
+  - Use Next.js for web/mobile, Hono for backend, Tailwind CSS for styling.
+<!-- TODO: Are there any additional must-have features or specific implementation details for each feature? -->
+
+## 5. Acceptance Criteria & "Done" Definition
+- The app is considered "done" when:
+  - A user can load the website and see the main page.
+  - The user can type into the text field and press the Enter key.
+  - The entered note is saved to the backend.
+  - The saved note is displayed in the list of notes (to-dos) on the main page.
+
+## 6. Key Technical Requirements & Constraints
+- Non-negotiable requirements:
+  - TypeScript for all code.
+  - Hosted on Cloudflare.
+  - Monorepo with pnpm workspaces.
+  - Use Biome for formatting and enforce with git hooks.
+  - Use Vitest for testing.
+- Non-functional requirements and constraints:
+  - Focus on simplicity and cross-platform usability.
+<!-- TODO: Are there any additional non-functional requirements (performance, scalability, security, reliability) or constraints (infrastructure, budget)? -->
+
+## 7. Success Metrics (Technical Viewpoint)
+<!-- TODO: How will the development team measure technical success post-deployment (e.g., system stability, error rates, performance metrics)? -->
+
+## 8. Development Logistics & Lookahead
+- Major assumptions: Simplicity and cross-platform usability are achievable with the chosen stack.
+<!-- TODO: What are the significant technical risks or dependencies, and initial mitigation thoughts? What future development considerations should be noted for extensibility? -->
+````
+
+## File: docs/STRUCTURE.md
+````markdown
+# Project Structure Best Practices
+
+## 1. Monorepo Layout
+- Use a monorepo managed by `pnpm` workspaces for all apps and packages.
+- Organize code into logical workspaces:
+  - `apps/` for user-facing applications (web, mobile, VS Code extension).
+  - `packages/` for shared logic, UI components, and utilities.
+  - `backend/` for API and backend logic (Hono on Cloudflare Workers).
+  - `libs/` for shared libraries, utilities, hooks, and logic used across multiple apps or services.
+- Keep configuration files (e.g., `pnpm-workspace.yaml`, `tsconfig.json`, `.biome.json`) at the root.
+- Store documentation in `docs/`.
+
+### About the `libs/` Folder
+- **Purpose:** Store shared libraries, utilities, hooks, or logic that are reused across multiple parts of the system (web, mobile, backend, etc.).
+- **Best Practices:**
+  - Each library in `libs/` should be self-contained and may have its own `package.json` for workspace management.
+  - Add a `tsconfig.json` in each lib for local TypeScript overrides, and reference them from the root `tsconfig.json`.
+  - Include tests and a `README.md` in each library.
+  - Use clear, descriptive names for each library (e.g., `utils`, `hooks`, `api`).
+  - Prefer colocating code by domain or functionality for easier discoverability.
+
+## 2. Tech Stack & Tooling
+- **Languages:** TypeScript everywhere (frontend, backend, shared).
+- **Frontend:** Next.js (web, possibly mobile), Tailwind CSS, shadcn/ui, Zustand, react-hook-form, zod.
+- **Backend:** Hono (Cloudflare Workers), zod, JWT, CORS, logging middleware.
+- **Testing:** Vitest for all tests (unit, integration, E2E optional).
+- **Formatting/Linting:** Biome, enforced with pre-commit git hooks (Husky).
+- **CI/CD:** GitHub Actions for linting, testing, and deployment.
+- **Storage:** Cloudflare KV for notes, D1 optional for future relational needs.
+
+## 3. Documentation & Diagrams
+- Store all documentation in `docs/`.
+- Use Markdown for requirements, tech stack, and architecture.
+- Use Mermaid diagrams for user flows and event lifecycles (see `docs/diagrams/`).
+
+## 4. Best Practices
+- **Simplicity:** Favor simple, composable modules and clear separation of concerns.
+- **Cross-Platform:** Design shared logic for reuse across web, mobile, and VS Code extension.
+- **Observability:** Add logging at key points (API, state changes, errors).
+- **Testing:** Write tests for all logic; maintain high coverage.
+- **Formatting:** Enforce consistent code style with Biome and pre-commit hooks.
+- **Security:** Validate all input (zod), use HTTPS, manage secrets securely.
+- **Scalability:** Use Cloudflare-native solutions for global reach and low latency.
+
+## 5. Example Directory Structure
+```text
+/ (repo root)
+├── apps/
+│   ├── web/           # Next.js web app
+│   ├── mobile/        # (Optional) React Native app
+│   └── vscode-ext/    # (Optional) VS Code extension
+├── backend/           # Hono API (Cloudflare Workers)
+├── packages/
+│   ├── ui/            # Shared UI components (shadcn/ui, etc.)
+│   └── types/         # Shared TypeScript types
+├── libs/
+│   ├── utils/         # Shared utility functions
+│   ├── hooks/         # Shared React hooks
+│   └── api/           # API clients or shared API logic
+├── docs/
+│   ├── PRD.md
+│   ├── TECH_STACK.md
+│   ├── STRUCTURE.md
+│   └── diagrams/
+├── .biome.json        # Biome config
+├── pnpm-workspace.yaml
+├── tsconfig.json
+└── ...
+```
+
+## 6. References
+- See `docs/PRD.md` for product requirements.
+- See `docs/TECH_STACK.md` for detailed tech stack.
+- See `docs/diagrams/` for user and event flow diagrams.
+````
+
+## File: docs/TECH_STACK.md
+````markdown
+# Tech Stack
+
+## 1. Project Overview & Goals (Informed by PRD)
+A simple note-taking app inspired by Google Keep, but less complex. Should be accessible on web, mobile, and as a VS Code extension. Hosted on Cloudflare. Focus on simplicity and cross-platform usability. Primary goal: Provide a lightweight, accessible note-taking solution across multiple platforms.
+
+## 2. Core Languages & Runtimes
+- Backend Language: TypeScript (all code)
+- Frontend Language/Framework: TypeScript with Next.js (web, possibly mobile via Next.js/React Native integration)
+- Runtime: Cloudflare Workers (for backend)
+- Monorepo managed with pnpm workspaces
+
+## 3. Frameworks & Libraries (Backend)
+- Framework: Hono (Cloudflare Workers, similar to Express)
+- Key libraries:
+  - zod (schema validation)
+  - @hono/zod-validator (request validation)
+  - @hono/jwt (JWT authentication)
+  - @hono/cors (CORS middleware)
+  - @hono/logger (logging middleware)
+  - @hono/router (routing utilities)
+  - cloudflare/kv-asset-handler (for asset and KV storage integration)
+  - dotenv (environment variable management for local dev)
+  - @biomejs/biome (formatting/linting)
+  - vitest (testing)
+
+## 4. Frameworks & Libraries (Frontend)
+- Framework: Next.js (web, possibly mobile via Next.js/React Native integration)
+- Styling: Tailwind CSS
+- Key UI libraries:
+  - shadcn/ui (for accessible, customizable UI components)
+  - Headless UI (for unstyled, accessible UI primitives)
+  - @tanstack/react-query (data fetching/caching)
+  - Zustand (state management)
+  - react-hook-form (form management)
+  - zod (form validation)
+  - next-auth (authentication, if needed)
+  - @biomejs/biome (formatting/linting)
+  - vitest (testing)
+
+## 5. Database & Data Storage
+- Primary storage: Cloudflare KV (key-value store) for fast, globally distributed note storage
+- Optionally, Cloudflare D1 (SQLite-compatible) for relational data if needed in the future
+- Caching: Cloudflare Cache API for static assets and frequently accessed data
+- No traditional SQL/NoSQL database required for MVP; Cloudflare KV is sufficient for simple note storage
+- Object storage: Not required for MVP, but Cloudflare R2 can be used for file attachments if needed
+- Message queues: Not required for MVP
+
+## 6. Infrastructure & Deployment
+- Hosting: Cloudflare (Cloudflare Pages for frontend, Cloudflare Workers for backend API)
+- CI/CD: GitHub Actions (for linting, testing, and deployment)
+- Containerization: Not required (Cloudflare Workers/Pages are serverless)
+- Orchestration: Not required
+- DNS: Managed via Cloudflare
+- Environment variables: Managed via Cloudflare dashboard and dotenv for local development
+
+## 7. APIs & Integrations
+- The project exposes its own RESTful API (via Hono on Cloudflare Workers)
+- API style: REST (JSON over HTTPS)
+- API documentation: OpenAPI (Swagger) or typedoc for auto-generated docs
+- Third-party integrations: None required for MVP, but can integrate with authentication providers (e.g., GitHub, Google) via next-auth if needed
+- Analytics: Cloudflare Analytics or Vercel Analytics for usage tracking
+
+## 8. Development Tools & Standards
+- Version control: Git
+- Repository hosting: GitHub
+- Formatting: Biome (enforced with pre-commit git hooks)
+- Linting: Biome
+- Testing: Vitest (unit, integration, and E2E tests)
+- IDE: Visual Studio Code (recommended)
+- Code formatting: EditorConfig, Biome
+- Commit hooks: Husky (for pre-commit formatting/linting)
+- Testing strategies: Unit tests for logic, integration tests for API, E2E tests with Playwright or Cypress (optional for MVP)
+
+## 9. Security Considerations
+- Use HTTPS everywhere (enforced by Cloudflare)
+- Input validation with zod on both frontend and backend
+- JWT-based authentication for API endpoints (using @hono/jwt)
+- CORS configured with @hono/cors
+- Environment variables managed securely (never commit secrets)
+- Dependency scanning via GitHub Dependabot
+- Regular updates of dependencies
+- Use of Content Security Policy (CSP) headers
+- Rate limiting (Cloudflare Workers/Cloudflare settings)
+- Secrets management via Cloudflare dashboard
+
+## 10. Rationale & Alternatives Considered
+- TypeScript: Chosen for type safety, maintainability, and cross-platform compatibility. Alternative: JavaScript (less type safety).
+- Next.js: Rapid development, SSR/SSG support, large ecosystem. Alternatives: Remix, SvelteKit, Astro (Next.js is most mature for React-based apps).
+- Hono: Lightweight, fast, Cloudflare-native. Alternatives: Express (not Cloudflare-native), Miniflare (dev only), or raw Workers API (less ergonomic).
+- Tailwind CSS: Utility-first, fast prototyping, highly customizable. Alternatives: CSS Modules, styled-components, Chakra UI (Tailwind is most flexible for MVP).
+- pnpm: Fast, disk-efficient monorepo management. Alternatives: npm, yarn (pnpm is fastest and best for monorepos).
+- Biome: Fast, all-in-one formatter/linter. Alternatives: ESLint + Prettier (Biome is simpler and faster).
+- Vitest: Fast, Vite-native testing. Alternatives: Jest (Vitest is faster for Vite/Next.js projects).
+- Cloudflare KV: Simple, globally distributed, low-latency storage. Alternatives: D1 (for relational), FaunaDB, Supabase (KV is simplest for MVP).
+- Cloudflare Pages/Workers: Serverless, globally distributed, easy integration. Alternatives: Vercel, Netlify, AWS Lambda (Cloudflare is preferred for global reach and cost).
+````
+
+## File: libs/tsconfig.json
+````json
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["src"]
+}
+````
+
+## File: packages/tsconfig.json
+````json
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["src"]
+}
+````
+
+## File: .gitignore
+````
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for instrumented libs generated by jscoverage/JSCover
+lib-cov
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+# Comment in the public line in if your project uses Gatsby and not Next.js
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# public
+
+# vuepress build output
+.vuepress/dist
+
+# vuepress v2.x temp and cache directory
+.temp
+.cache
+
+# vitepress build output
+**/.vitepress/dist
+
+# vitepress cache directory
+**/.vitepress/cache
+
+# Docusaurus cache and generated files
+.docusaurus
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+````
+
+## File: tsconfig.base.json
+````json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true
+  }
+}
+````
+
+## File: vitest.config.ts
+````typescript
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: "./vitest.setup.ts",
+  },
+});
+````
+
+## File: vitest.setup.ts
+````typescript
+import "jsdom-global/register";
+import "@testing-library/jest-dom";
+````
+
+## File: apps/web/components/ui/NoteCard.tsx
+````typescript
+import React, { useState } from "react";
+import type { Note } from "../../mocks/notes";
+import { Card } from "./card";
+
+interface NoteCardProps {
+  note: Note;
+  onEdit: (id: string, content: string) => void;
+  onDelete: (id: string) => void;
+}
+
+export function NoteCard({ note, onEdit, onDelete }: NoteCardProps) {
+  const [editing, setEditing] = useState(false);
+  const [editContent, setEditContent] = useState(note.content);
+
+  const handleEdit = () => {
+    if (editContent.trim()) {
+      console.log("[Note] Edit", { id: note.id, content: editContent });
+      onEdit(note.id, editContent);
+      setEditing(false);
+    }
+  };
+
+  return (
+    <Card className="mb-2">
+      <div className="p-4 flex items-center justify-between">
+        {editing ? (
+          <>
+            <input
+              value={editContent}
+              onChange={(e) => setEditContent(e.target.value)}
+              className="border p-2 rounded w-full mr-2"
+            />
+            <button
+              type="button"
+              onClick={handleEdit}
+              className="bg-green-500 text-white px-2 py-1 rounded mr-2"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={() => setEditing(false)}
+              className="bg-gray-300 text-black px-2 py-1 rounded"
+            >
+              Cancel
+            </button>
+          </>
+        ) : (
+          <>
+            <div>
+              <div className="font-bold">{note.content}</div>
+              <div className="text-xs text-gray-500">
+                {new Date(note.createdAt).toLocaleString()}
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => setEditing(true)}
+                className="bg-yellow-400 text-black px-2 py-1 rounded"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  console.log("[Note] Delete", { id: note.id });
+                  onDelete(note.id);
+                }}
+                className="bg-red-500 text-white px-2 py-1 rounded"
+              >
+                Delete
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </Card>
+  );
+}
+````
+
+## File: apps/web/components/ui/NoteForm.tsx
+````typescript
+import { zodResolver } from "@hookform/resolvers/zod";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+const noteSchema = z.object({
+  content: z.string().min(1, "Note cannot be empty"),
+});
+
+type NoteForm = z.infer<typeof noteSchema>;
+
+interface NoteFormProps {
+  onAdd: (content: string) => void;
+}
+
+export function NoteForm({ onAdd }: NoteFormProps) {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<NoteForm>({ resolver: zodResolver(noteSchema) });
+
+  const onSubmit = (data: NoteForm) => {
+    console.log("[Note] Create", { content: data.content });
+    onAdd(data.content);
+    reset();
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} style={{ marginBottom: 24 }}>
+      <input
+        {...register("content")}
+        placeholder="Type a new note..."
+        className="border p-2 rounded w-full mb-2"
+      />
+      {errors.content && <div className="text-red-500 text-xs mb-2">{errors.content.message}</div>}
+      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+        Add Note
+      </button>
+    </form>
+  );
+}
+````
+
+## File: apps/web/lib/utils.ts
+````typescript
+// Utility to join class names conditionally
+export function cn(...args: (string | undefined | false | null)[]): string {
+  return args.filter(Boolean).join(" ");
+}
+````
+
+## File: apps/web/store/notes.ts
+````typescript
+import { create } from "zustand";
+import type { Note } from "../mocks/notes";
+
+interface NotesState {
+    notes: Note[];
+    addNote: (content: string) => void;
+    editNote: (id: string, content: string) => void;
+    deleteNote: (id: string) => void;
+}
+
+export const useNotesStore = create<NotesState>((set) => ({
+    notes: [],
+    addNote: (content) =>
+        set((state) => ({
+            notes: [
+                ...state.notes,
+                {
+                    id: Math.random().toString(36).slice(2),
+                    content,
+                    createdAt: new Date().toISOString(),
+                },
+            ],
+        })),
+    editNote: (id, content) =>
+        set((state) => ({
+            notes: state.notes.map((note) =>
+                note.id === id ? { ...note, content } : note
+            ),
+        })),
+    deleteNote: (id) =>
+        set((state) => ({
+            notes: state.notes.filter((note) => note.id !== id),
+        })),
+}));
+````
+
+## File: apps/web/package.json
+````json
+{
+  "name": "web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
+    "lucide-react": "^0.508.0",
+    "next": "14.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.56.3",
+    "zod": "^3.24.4",
+    "zustand": "^5.0.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.5",
+    "@types/node": "22.15.17",
+    "typescript": "5.8.3"
+  },
+  "vitest": {
+    "test": {
+      "environment": "jsdom",
+      "globals": true
+    }
+  }
+}
+````
+
+## File: apps/web/vitest.config.ts
+````typescript
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: "./vitest.setup.ts",
+  },
+});
+````
+
+## File: apps/web/vitest.setup.ts
+````typescript
+import "@testing-library/jest-dom";
+import "jsdom-global/register";
+````
+
+## File: docs/tasks/2025-05-08-gothic-mock-migration.md
+````markdown
+# Task: Implement Gothic Mock Design in Web App
+
+## Commit 1: ✅ feat: Move and integrate gothic mock components into web app (35b1268)
+**Description:**
+- Move all relevant components, logic, and styles from the gothic mock (e.g., `docs/mocks/gothic.md`) into the `apps/web` folder.
+- Refactor the gothic mock code as needed to fit the structure of the web app, placing reusable UI in `apps/web/components/ui`, main app logic in `apps/web/app`, and any mock data in `apps/web/mocks` or `store`.
+- Remove or archive any legacy components or pages that are being replaced by the gothic mock design.
+- Ensure the new design is the default experience when running the web app.
+
+**Verification:**
+- Run the web app locally (`pnpm dev` or equivalent) and confirm the gothic mock design is fully functional and visually matches the mock.
+- All gothic mock features (note creation, pinning, search, theme toggle, etc.) work as expected.
+- No legacy UI is visible or accessible.
+
+---
+
+## Commit 2: ✅ refactor: Modularize gothic mock into small, reusable components (e7d2770)
+**Description:**
+- Break down the gothic mock code into small, focused components (≤200 lines each) and place them in `apps/web/components/ui` or other appropriate directories.
+- Add excessive logging to key actions (note creation, deletion, pinning, theme toggle) for observability.
+- Ensure all files remain under 200 lines where possible.
+
+**Verification:**
+- All gothic mock features still work after refactor.
+- Each component file is ≤200 lines.
+- Logging output is visible in the browser console for key actions.
+
+---
+
+## Commit 3: ✅ chore: Add/Update tests for gothic mock features (e9dc340)
+**Description:**
+- Add or update tests using `vitest`
+
+---
+
+## Commit 4: ✅ docs: Update README and document new design (a65d0db)
+**Description:**
+// ... existing code ...
+
+---
+
+## Commit 5: ✅ feat: Full gothic mock UI with pin, edit, delete, logging, and accessibility (56103eb)
+**Description:**
+- Migrated the entire gothic mock UI from docs/mocks/gothic.md into the Next.js app.
+- All features: pin/unpin, edit, delete, excessive logging, dark mode, accessibility, and polish.
+- All linter errors fixed.
+- UI matches the reference mock exactly.
+````
+
+## File: .biome.json
+````json
+{
+  "$schema": "https://biomejs.dev/schemas/1.0.0/schema.json",
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "quoteStyle": "double",
+    "trailingComma": "all"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  }
+}
+````
+
+## File: biome.json
+````json
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "vcs": {
+    "enabled": false,
+    "clientKind": "git",
+    "useIgnoreFile": false
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": [
+      "node_modules",
+      "dist",
+      "build",
+      "coverage",
+      ".next",
+      ".turbo",
+      "*.log"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  }
+}
+````
+
+## File: pnpm-workspace.yaml
+````yaml
+packages:
+  - 'apps/*'
+  - 'backend'
+  - 'packages/*'
+  - 'libs/*'
+````
+
+## File: .husky/pre-commit
+````
+#!/bin/sh
+pnpm biome check --staged --write
+````
+
+## File: apps/web/app/layout.tsx
+````typescript
+import "./globals.css";
+
+const DEBUG_UI = typeof process !== "undefined" && process.env.NEXT_PUBLIC_DEBUG_UI === "true";
+
+if (typeof window !== "undefined") {
+  // Print Tailwind version and config if possible
+  // @ts-ignore
+  if (window.tailwind) {
+    // @ts-ignore
+    console.log("[DEBUG] Tailwind version:", window.tailwind.version);
+    // @ts-ignore
+    console.log("[DEBUG] Tailwind config:", window.tailwind.config);
+  } else {
+    console.log("[DEBUG] Tailwind runtime not detected. Version/config not available.");
+  }
+}
+
+export const metadata = {
+  title: "Next.js",
+  description: "Generated by Next.js",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        {DEBUG_UI && (
+          <div>
+            <div className="bg-red-700 text-white text-center py-2 font-bold z-50">
+              [DEBUG] If you see this red banner, Tailwind CSS is loaded.
+            </div>
+            <div className="flex flex-wrap gap-2 justify-center my-2">
+              <div className="bg-red-500 text-white px-2">red-500</div>
+              <div className="bg-orange-500 text-white px-2">orange-500</div>
+              <div className="bg-yellow-500 text-black px-2">yellow-500</div>
+              <div className="bg-green-500 text-white px-2">green-500</div>
+              <div className="bg-blue-500 text-white px-2">blue-500</div>
+              <div className="bg-indigo-500 text-white px-2">indigo-500</div>
+              <div className="bg-purple-500 text-white px-2">purple-500</div>
+              <div className="bg-pink-500 text-white px-2">pink-500</div>
+              <div className="bg-stone-950 text-white px-2">stone-950</div>
+              <div className="bg-stone-800 text-white px-2">stone-800</div>
+              <div className="bg-stone-700 text-white px-2">stone-700</div>
+              <div className="rounded-xl bg-gray-300 text-black px-2">rounded-xl</div>
+              <div className="shadow-lg bg-white text-black px-2">shadow-lg</div>
+            </div>
+          </div>
+        )}
+        {children}
+      </body>
+    </html>
+  );
+}
+````
+
+## File: apps/web/components/ui/card.tsx
+````typescript
+import type React from "react";
+
+import { cn } from "../../lib/utils";
+
+function Card({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card"
+      className={cn(
+        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-header"
+      className={cn(
+        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-title"
+      className={cn("leading-none font-semibold", className)}
+      {...props}
+    />
+  );
+}
+
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-description"
+      className={cn("text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  );
+}
+
+function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-action"
+      className={cn("col-start-2 row-span-2 row-start-1 self-start justify-self-end", className)}
+      {...props}
+    />
+  );
+}
+
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  return <div data-slot="card-content" className={cn("px-6", className)} {...props} />;
+}
+
+function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn("flex items-center px-6 [.border-t]:pt-6", className)}
+      {...props}
+    />
+  );
+}
+
+export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent };
+````
+
+## File: NOTES.md
+````markdown
+# App Idea: Cross-Platform Note-Taking App
+
+## Overview
+- A simple note-taking app inspired by Google Keep, but less complex.
+- Should be accessible on web, mobile, and as a VS Code extension.
+- Hosted on Cloudflare.
+
+## Tech Stack & Preferences
+- Monorepo managed with `pnpm` workspaces.
+- Language: TypeScript.
+- UI Framework: Next.js (for web and possibly mobile via Next.js/React Native integration).
+- Styling: Tailwind CSS.
+- Backend: Hono (Cloudflare Workers, similar to Express).
+- Testing: Vitest for all tests.
+
+## Additional Notes
+- Focus on simplicity and cross-platform usability.
+- Prioritize good test coverage from the start.
+- Prefer Biome for formatting and want git hooks set up to enforce formatting before pushing.
+````
+
+## File: README.md
+````markdown
+# Monorepo: Note-Taking App
+
+This repository is a pnpm-managed monorepo for a cross-platform note-taking application. It is structured for scalability, code sharing, and ease of development across web, backend, and shared packages.
+
+## Directory Structure
+
+```
+/ (repo root)
+├── apps/         # User-facing applications (web, mobile, VS Code extension)
+├── backend/      # API and backend logic (Hono on Cloudflare Workers)
+├── packages/     # Independently versionable/publishable packages (shared logic, UI components)
+├── libs/         # Internal shared libraries, utilities, hooks, and logic (not published)
+├── docs/         # Documentation, diagrams, and requirements
+├── .husky/       # Git hooks (pre-commit formatting/linting)
+├── biome.json    # Biome config (formatting/linting)
+├── pnpm-workspace.yaml
+├── tsconfig.json # TypeScript config
+└── ...
+```
+
+See [`docs/STRUCTURE.md`](docs/STRUCTURE.md) for more details on the directory layout.
+
+## Tech Stack
+- **Monorepo:** pnpm workspaces
+- **Languages:** TypeScript everywhere
+- **Frontend:** Next.js, Tailwind CSS, shadcn/ui, Zustand, react-hook-form, zod
+- **Backend:** Hono (Cloudflare Workers), zod, JWT, CORS, logging middleware
+- **Testing:** Vitest
+- **Formatting/Linting:** Biome (enforced with Husky pre-commit hook)
+
+See [`docs/TECH_STACK.md`](docs/TECH_STACK.md) for full details.
+
+## Getting Started
+
+1. **Install dependencies:**
+   ```sh
+   pnpm install
+   ```
+2. **Husky hooks are set up automatically via the `prepare` script.**
+3. **Run formatting/linting:**
+   ```sh
+   pnpm biome check --staged --write
+   # or to check/format all files
+   pnpm biome check --write .
+   ```
+4. **Develop apps/packages:**
+   - Add new apps in `apps/`
+   - Add backend logic in `backend/`
+   - Add independently versionable/publishable code in `packages/`
+   - Add internal shared code in `libs/`
+
+## Contributing
+- All code must pass Biome formatting/linting before commit (enforced by Husky).
+- See `docs/` for requirements, tech stack, and architecture.
+
+---
+
+## Gothic Mock Web App Design (2025-05-08)
+
+The web app now implements the **Gothic Mock** design, inspired by Google Keep:
+
+- **Features:**
+  - Create, edit, and delete notes
+  - Pin notes (future)
+  - Search notes (future)
+  - Theme toggle (future)
+  - Fast, keyboard-friendly UI
+  - State managed with Zustand
+  - Form validation with zod + react-hook-form
+  - All actions are logged to the console for observability
+- **Tech:** Next.js 14+, Tailwind CSS, shadcn/ui, Zustand, zod, Vitest
+- **Location:** All main UI in `apps/web/app/page.tsx` and `apps/web/components/ui/`
+- **Mock data:** `apps/web/mocks/notes.ts`, store logic in `apps/web/store/notes.ts`
+
+### Running the Web App
+
+```sh
+pnpm install
+pnpm --filter ./apps/web dev
+```
+
+- The app will be available at http://localhost:3000 or the next available port.
+- All gothic mock features are available by default.
+
+### Development
+- UI components: `apps/web/components/ui/`
+- State/store: `apps/web/store/notes.ts`
+- Tests: colocated in `__tests__` folders, run with `pnpm test`
+- See [docs/mocks/gothic.md](docs/mocks/gothic.md) for the original design mock
+- See [docs/diagrams/user-interactions.md](docs/diagrams/user-interactions.md) for user flow
+- See [docs/diagrams/webpage-events.md](docs/diagrams/webpage-events.md) for event flow
+
+### Testing
+```sh
+pnpm --filter ./apps/web test
+```
+- All gothic mock features are covered by Vitest tests.
+
+---
+
+For more, see [`docs/STRUCTURE.md`](docs/STRUCTURE.md) and [`docs/TECH_STACK.md`](docs/TECH_STACK.md).
+````
+
+## File: tsconfig.json
+````json
+{
+  "files": [],
+  "references": [
+    { "path": "./apps" },
+    { "path": "./backend" },
+    { "path": "./packages" },
+    { "path": "./libs" }
+  ]
+}
+````
+
+## File: package.json
+````json
+{
+  "name": "workshop-2025-05-08-2025-05-08-initialize-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "lint": "pnpm biome lint .",
+    "format": "pnpm biome format --write .",
+    "check": "pnpm biome check --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.10.0",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@tailwindcss/cli": "^4.1.6",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "22.15.17",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
+    "jsdom-global": "^3.0.2",
+    "react": "18.3.0",
+    "react-dom": "18.3.0",
+    "tailwindcss": "^4.1.6",
+    "vitest": "^3.1.3"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "lucide-react": "^0.508.0",
+    "postcss": "^8.5.3"
+  }
+}
+````
+
+## File: apps/web/app/page.tsx
+````typescript
+"use client";
+import {
+  AlertTriangle,
+  Archive,
+  BellRing,
+  BookOpen,
+  CheckSquare,
+  Edit3,
+  Feather,
+  Grip,
+  Image as ImageIcon,
+  Lightbulb,
+  Lock,
+  Menu,
+  Mic,
+  Moon,
+  Palette,
+  Plus,
+  RefreshCcw,
+  Search,
+  Settings2,
+  Sun,
+  Trash2,
+  UserCircle,
+  X,
+} from "lucide-react";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
+
+const initialNotesData = [
+  {
+    id: "1",
+    title: "Incantations Vol. I",
+    content:
+      "Whispers of the old gods, bound in shadow and ink. Remember the verse of summoning for the equinox.",
+    pinned: true,
+    color: "bg-stone-800/70",
+  },
+  {
+    id: "2",
+    title: "Alchemical Concoctions",
+    content:
+      "The recipe for the Elixir of Night: moonshade, wolfsbane, and three drops of raven's tear. Handle with extreme caution.",
+    pinned: false,
+    color: "bg-stone-800/70",
+  },
+  {
+    id: "3",
+    title: "Cartography of Forgotten Realms",
+    content:
+      "A map fragment depicting the Sunken City of Aethel. The path is treacherous, guarded by spectral sentinels.",
+    pinned: false,
+    color: "bg-stone-800/70",
+  },
+  {
+    id: "4",
+    title: "Prophecies of the Blood Moon",
+    content:
+      "When the moon weeps crimson, the veil thins. The seventh son of a seventh son shall rise.",
+    pinned: true,
+    color: "bg-red-900/50",
+  },
+  {
+    id: "5",
+    title: "Herbalism - Darkwood Flora",
+    content:
+      "Nightshade: potent sedative. Corpseflower: attracts spirits. Shadowmoss: thrives in places untouched by light.",
+    pinned: false,
+    color: "bg-stone-800/70",
+  },
+];
+
+// --- Types for props ---
+type IconWrapperProps = { icon: React.ElementType; size?: number; className?: string };
+type NavItemProps = {
+  icon: React.ElementType;
+  text: string;
+  isActive: boolean;
+  onClick: () => void;
+  colors: Record<string, string>;
+};
+
+function IconWrapper({ icon: Icon, size = 20, className = "" }: IconWrapperProps) {
+  return <Icon size={size} className={`inline-block ${className}`} />;
+}
+
+function NavItem({ icon, text, isActive, onClick, colors }: NavItemProps) {
+  return (
+    <li>
+      <button
+        type="button"
+        className={`flex items-center w-full px-4 py-2 my-1 rounded-lg transition-colors duration-150 text-left gap-3 font-medium text-base ${isActive ? colors.sidebarActive : colors.sidebarHover}`}
+        onClick={onClick}
+      >
+        <IconWrapper icon={icon} size={20} className="mr-2" />
+        {text}
+      </button>
+    </li>
+  );
+}
+
+const DEBUG_UI = typeof process !== "undefined" && process.env.NEXT_PUBLIC_DEBUG_UI === "true";
+
+export default function App() {
+  const [notes, setNotes] = useState(initialNotesData);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeNavItem, setActiveNavItem] = useState("Notes");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [theme, setTheme] = useState("dark");
+  const [isTakeNoteFocused, setIsTakeNoteFocused] = useState(false);
+  const [newNoteTitle, setNewNoteTitle] = useState("");
+  const [newNoteContent, setNewNoteContent] = useState("");
+  const takeNoteRef = useRef<HTMLDivElement>(null);
+  const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editContent, setEditContent] = useState("");
+
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.href =
+      "https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap";
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (takeNoteRef.current && !takeNoteRef.current.contains(event.target as Node)) {
+        if (newNoteTitle || newNoteContent) handleAddNote();
+        setIsTakeNoteFocused(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [newNoteTitle, newNoteContent]);
+
+  const handleAddNote = () => {
+    if (newNoteTitle.trim() === "" && newNoteContent.trim() === "") return;
+    const newNote = {
+      id: Date.now().toString(),
+      title: newNoteTitle || "Untitled Scroll",
+      content: newNoteContent,
+      pinned: false,
+      color: "bg-stone-800/70",
+    };
+    setNotes((prev) => [newNote, ...prev]);
+    setNewNoteTitle("");
+    setNewNoteContent("");
+  };
+
+  const filteredNotes = notes
+    .filter(
+      (note) =>
+        note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        note.content.toLowerCase().includes(searchTerm.toLowerCase()),
+    )
+    .sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
+
+  const currentThemeColors = {
+    bgBody: theme === "dark" ? "bg-stone-950" : "bg-amber-50",
+    textPrimary: theme === "dark" ? "text-stone-200" : "text-stone-800",
+    textSecondary: theme === "dark" ? "text-stone-400" : "text-stone-600",
+    bgHeader:
+      theme === "dark" ? "bg-stone-900/80 backdrop-blur-md" : "bg-amber-100/80 backdrop-blur-md",
+    borderHeader: theme === "dark" ? "border-stone-700" : "border-amber-300",
+    bgSidebar: theme === "dark" ? "bg-stone-900" : "bg-amber-100",
+    borderSidebar: theme === "dark" ? "border-stone-700" : "border-amber-300",
+    sidebarHover: theme === "dark" ? "hover:bg-stone-800" : "hover:bg-amber-200",
+    sidebarActive: theme === "dark" ? "bg-red-900/70 text-red-100" : "bg-red-700 text-amber-50",
+    iconColor: theme === "dark" ? "text-stone-400" : "text-stone-500",
+    iconHover: theme === "dark" ? "hover:text-stone-100" : "hover:text-stone-900",
+    searchBg: theme === "dark" ? "bg-stone-800/50" : "bg-amber-200/50",
+    searchFocusBg: theme === "dark" ? "bg-stone-700/70" : "bg-amber-200/90",
+    searchPlaceholder: theme === "dark" ? "placeholder-stone-500" : "placeholder-stone-400",
+    takeNoteBg: theme === "dark" ? "bg-stone-900" : "bg-amber-100",
+    takeNoteBorder: theme === "dark" ? "border-stone-700" : "border-amber-400",
+    noteCardBg: theme === "dark" ? "bg-stone-800/70" : "bg-amber-100/80",
+    noteCardBorder: theme === "dark" ? "border-stone-700/50" : "border-amber-300",
+    noteCardHoverBorder: theme === "dark" ? "hover:border-red-700/70" : "hover:border-red-500/70",
+    buttonBg:
+      theme === "dark" ? "bg-stone-700 hover:bg-stone-600" : "bg-stone-600 hover:bg-stone-700",
+    buttonText: theme === "dark" ? "text-stone-200" : "text-amber-50",
+  };
+
+  const handleTogglePin = (id: string) => {
+    setNotes((prev) => prev.map((n) => (n.id === id ? { ...n, pinned: !n.pinned } : n)));
+    console.log("[Note] Pin toggle", { id });
+  };
+
+  const handleDelete = (id: string) => {
+    setNotes((prev) => prev.filter((n) => n.id !== id));
+    console.log("[Note] Delete", { id });
+  };
+
+  const handleStartEdit = (note: (typeof initialNotesData)[0]) => {
+    setEditingNoteId(note.id);
+    setEditTitle(note.title);
+    setEditContent(note.content);
+  };
+
+  const handleSaveEdit = (id: string) => {
+    setNotes((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, title: editTitle, content: editContent } : n)),
+    );
+    setEditingNoteId(null);
+    setEditTitle("");
+    setEditContent("");
+    console.log("[Note] Edit", { id, title: editTitle, content: editContent });
+  };
+
+  const handleCancelEdit = () => {
+    setEditingNoteId(null);
+    setEditTitle("");
+    setEditContent("");
+  };
+
+  return (
+    <div
+      className={`flex flex-col h-screen font-['Crimson_Text',_serif] ${currentThemeColors.bgBody} ${currentThemeColors.textPrimary} overflow-hidden`}
+    >
+      {/* Header */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-2 h-16 ${currentThemeColors.bgHeader} border-b ${currentThemeColors.borderHeader} shadow-lg shadow-stone-950/30 ${DEBUG_UI ? "border-4 border-yellow-500" : ""}`}
+      >
+        {DEBUG_UI && (
+          <div className="absolute left-2 top-0 bg-yellow-500 text-black px-2 text-xs z-50">
+            HEADER
+          </div>
+        )}
+        <div className="flex items-center">
+          <button
+            type="button"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}
+          >
+            <IconWrapper icon={Menu} size={24} />
+          </button>
+          <IconWrapper icon={BookOpen} size={32} className="mx-2 text-red-700" />
+          <h1 className="text-2xl font-['UnifrakturCook',_serif] text-red-500 select-none">
+            Grimoire Scribe
+          </h1>
+        </div>
+        <div className="flex-grow max-w-2xl mx-4">
+          <form
+            className={`flex items-center w-full h-10 ${currentThemeColors.searchBg} rounded-lg border border-transparent focus-within:border-red-700 focus-within:${currentThemeColors.searchFocusBg} transition-all`}
+          >
+            <button
+              type="button"
+              className={`p-2 ${currentThemeColors.iconColor} ${currentThemeColors.iconHover}`}
+            >
+              <IconWrapper icon={Search} size={20} />
+            </button>
+            <input
+              type="search"
+              placeholder="Search thy scrolls..."
+              className={`w-full h-full bg-transparent outline-none px-2 text-sm ${currentThemeColors.textPrimary} ${currentThemeColors.searchPlaceholder}`}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </form>
+        </div>
+        <div className="flex items-center">
+          <button
+            type="button"
+            className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}
+          >
+            <IconWrapper icon={RefreshCcw} size={20} />
+          </button>
+          <button
+            type="button"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}
+          >
+            <IconWrapper icon={theme === "dark" ? Sun : Moon} size={20} />
+          </button>
+          <button
+            type="button"
+            className={`p-3 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors`}
+          >
+            <IconWrapper icon={Settings2} size={20} />
+          </button>
+          <button
+            type="button"
+            className={`p-2 rounded-full ${currentThemeColors.iconHover} ${currentThemeColors.iconColor} transition-colors ml-2`}
+          >
+            <UserCircle size={28} className="bg-stone-700 text-stone-500 rounded-full p-0.5" />
+          </button>
+        </div>
+      </header>
+      {/* Main Area */}
+      <div className="flex flex-1 pt-16 overflow-hidden">
+        {/* Sidebar */}
+        <aside
+          className={` ${sidebarOpen ? "w-64" : "w-0"} transition-all duration-300 ease-in-out flex-shrink-0 ${currentThemeColors.bgSidebar} border-r ${currentThemeColors.borderSidebar} shadow-md shadow-stone-950/20 overflow-y-auto scrollbar-thin scrollbar-thumb-stone-700 scrollbar-track-stone-800/50 ${DEBUG_UI ? "border-4 border-blue-500" : ""}`}
+        >
+          {DEBUG_UI && (
+            <div className="absolute left-2 top-0 bg-blue-500 text-white px-2 text-xs z-50">
+              SIDEBAR
+            </div>
+          )}
+          {sidebarOpen && (
+            <nav className="p-2">
+              <ul>
+                {["Notes", "Reminders", "Archive", "Trash"].map((item) => (
+                  <NavItem
+                    key={item}
+                    icon={
+                      item === "Notes"
+                        ? Feather
+                        : item === "Reminders"
+                          ? BellRing
+                          : item === "Archive"
+                            ? Archive
+                            : Trash2
+                    }
+                    text={item}
+                    isActive={activeNavItem === item}
+                    onClick={() => setActiveNavItem(item)}
+                    colors={currentThemeColors}
+                  />
+                ))}
+                <li />
+                <NavItem
+                  key="Edit Labels"
+                  icon={Edit3}
+                  text="Edit Glyphs"
+                  isActive={activeNavItem === "Edit Glyphs"}
+                  onClick={() => setActiveNavItem("Edit Glyphs")}
+                  colors={currentThemeColors}
+                />
+              </ul>
+              <div
+                className={`mt-auto p-4 text-xs ${currentThemeColors.textSecondary} border-t ${currentThemeColors.borderSidebar}`}
+              >
+                <p>
+                  &copy; {new Date().getFullYear()} Grimoire Scribe. All rights reserved to the
+                  shadows.
+                </p>
+              </div>
+            </nav>
+          )}
+        </aside>
+        {/* Content Area */}
+        <main
+          className={`flex-1 flex flex-col items-center px-8 py-8 overflow-y-auto ${DEBUG_UI ? "border-4 border-green-500" : ""}`}
+        >
+          {DEBUG_UI && (
+            <div className="absolute left-2 top-0 bg-green-500 text-black px-2 text-xs z-50">
+              MAIN
+            </div>
+          )}
+          {/* Note Input Bar */}
+          <div
+            ref={takeNoteRef}
+            className={`w-full max-w-2xl mb-8 rounded-xl border ${currentThemeColors.takeNoteBorder} ${currentThemeColors.takeNoteBg} shadow-lg p-6 transition-all ${isTakeNoteFocused ? "ring-2 ring-red-700" : ""} ${DEBUG_UI ? "border-4 border-pink-500 relative" : ""}`}
+            onClick={() => setIsTakeNoteFocused(true)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                if (newNoteTitle || newNoteContent) handleAddNote();
+                setIsTakeNoteFocused(false);
+              }
+            }}
+          >
+            {DEBUG_UI && (
+              <div className="absolute left-2 top-0 bg-pink-500 text-black px-2 text-xs z-50">
+                NOTE INPUT
+              </div>
+            )}
+            <input
+              className="w-full bg-transparent text-lg font-semibold outline-none mb-2 placeholder-stone-500"
+              placeholder="Scribe a new enchantment..."
+              value={newNoteTitle}
+              onChange={(e) => setNewNoteTitle(e.target.value)}
+              onFocus={() => setIsTakeNoteFocused(true)}
+            />
+            {isTakeNoteFocused && (
+              <>
+                <textarea
+                  className="w-full bg-transparent outline-none resize-none min-h-[60px] mb-2 placeholder-stone-400"
+                  placeholder="Whisper thy secrets..."
+                  value={newNoteContent}
+                  onChange={(e) => setNewNoteContent(e.target.value)}
+                  rows={2}
+                />
+                <div className="flex items-center gap-2 justify-end">
+                  <button type="button" className="p-2" title="Checklist">
+                    <CheckSquare size={18} />
+                  </button>
+                  <button type="button" className="p-2" title="Image">
+                    <ImageIcon size={18} />
+                  </button>
+                  <button type="button" className="p-2" title="Mic">
+                    <Mic size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    className="ml-2 px-4 py-2 rounded-lg bg-red-900 text-red-100 font-semibold hover:bg-red-800 transition"
+                    onClick={handleAddNote}
+                  >
+                    Add
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+          {/* Sectioned Notes */}
+          <section
+            className={`w-full max-w-6xl ${DEBUG_UI ? "border-4 border-purple-500 relative" : ""}`}
+          >
+            {DEBUG_UI && (
+              <div className="absolute left-2 top-0 bg-purple-500 text-white px-2 text-xs z-50">
+                NOTES SECTION
+              </div>
+            )}
+            {/* Sacred Texts (Pinned) */}
+            <h2 className="mb-2 text-xs tracking-widest text-stone-400 font-semibold">
+              SACRED TEXTS
+            </h2>
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 ${DEBUG_UI ? "border-2 border-orange-500 relative" : ""}`}
+            >
+              {DEBUG_UI && (
+                <div className="absolute left-2 top-0 bg-orange-500 text-black px-2 text-xs z-50">
+                  SACRED TEXTS GRID
+                </div>
+              )}
+              {filteredNotes
+                .filter((n) => n.pinned)
+                .map((note) => (
+                  <div
+                    key={note.id}
+                    className={`relative rounded-xl border-2 ${note.color} ${currentThemeColors.noteCardBorder} ${currentThemeColors.noteCardHoverBorder} p-6 shadow-lg transition-all ${DEBUG_UI ? "border-4 border-red-500" : ""}`}
+                  >
+                    {DEBUG_UI && (
+                      <div className="absolute left-2 top-0 bg-red-500 text-white px-2 text-xs z-50">
+                        NOTE CARD
+                      </div>
+                    )}
+                    <div className="absolute top-2 right-2 flex gap-2">
+                      <button
+                        type="button"
+                        className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-700 text-white mr-1"
+                        title="Unpin"
+                        onClick={() => handleTogglePin(note.id)}
+                      >
+                        <Lock size={16} />
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-stone-800 text-stone-300 border border-stone-700"
+                        title="Delete"
+                        onClick={() => handleDelete(note.id)}
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-stone-800 text-stone-300 border border-stone-700"
+                        title="Edit"
+                        onClick={() => handleStartEdit(note)}
+                      >
+                        <Edit3 size={16} />
+                      </button>
+                    </div>
+                    {editingNoteId === note.id ? (
+                      <>
+                        <input
+                          className="w-full bg-transparent text-lg font-bold outline-none mb-2 font-['EB_Garamond',_serif]"
+                          value={editTitle}
+                          onChange={(e) => setEditTitle(e.target.value)}
+                        />
+                        <textarea
+                          className="w-full bg-transparent outline-none resize-none min-h-[60px] mb-2 font-['Crimson_Text',_serif]"
+                          value={editContent}
+                          onChange={(e) => setEditContent(e.target.value)}
+                          rows={2}
+                        />
+                        <div className="flex gap-2 justify-end">
+                          <button
+                            type="button"
+                            className="px-3 py-1 rounded bg-green-700 text-white"
+                            onClick={() => handleSaveEdit(note.id)}
+                          >
+                            Save
+                          </button>
+                          <button
+                            type="button"
+                            className="px-3 py-1 rounded bg-gray-700 text-white"
+                            onClick={handleCancelEdit}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="font-bold text-lg mb-2 font-['EB_Garamond',_serif]">
+                          {note.title}
+                        </div>
+                        <div className="text-stone-300 text-sm font-['Crimson_Text',_serif]">
+                          {note.content}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ))}
+            </div>
+            {/* Common Scrolls (Unpinned) */}
+            <h2 className="mb-2 text-xs tracking-widest text-stone-400 font-semibold">
+              COMMON SCROLLS
+            </h2>
+            <div
+              className={`grid grid-cols-1 md:grid-cols-3 gap-6 ${DEBUG_UI ? "border-2 border-cyan-500 relative" : ""}`}
+            >
+              {DEBUG_UI && (
+                <div className="absolute left-2 top-0 bg-cyan-500 text-black px-2 text-xs z-50">
+                  COMMON SCROLLS GRID
+                </div>
+              )}
+              {filteredNotes
+                .filter((n) => !n.pinned)
+                .map((note) => (
+                  <div
+                    key={note.id}
+                    className={`relative rounded-xl border-2 ${note.color} ${currentThemeColors.noteCardBorder} ${currentThemeColors.noteCardHoverBorder} p-6 shadow-lg transition-all ${DEBUG_UI ? "border-4 border-lime-500" : ""}`}
+                  >
+                    {DEBUG_UI && (
+                      <div className="absolute left-2 top-0 bg-lime-500 text-black px-2 text-xs z-50">
+                        NOTE CARD
+                      </div>
+                    )}
+                    <div className="absolute top-2 right-2 flex gap-2">
+                      <button
+                        type="button"
+                        className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-stone-800 text-stone-300 border border-stone-700"
+                        title="Pin"
+                        onClick={() => handleTogglePin(note.id)}
+                      >
+                        <Feather size={16} />
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-stone-800 text-stone-300 border border-stone-700"
+                        title="Delete"
+                        onClick={() => handleDelete(note.id)}
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-stone-800 text-stone-300 border border-stone-700"
+                        title="Edit"
+                        onClick={() => handleStartEdit(note)}
+                      >
+                        <Edit3 size={16} />
+                      </button>
+                    </div>
+                    {editingNoteId === note.id ? (
+                      <>
+                        <input
+                          className="w-full bg-transparent text-lg font-bold outline-none mb-2 font-['EB_Garamond',_serif]"
+                          value={editTitle}
+                          onChange={(e) => setEditTitle(e.target.value)}
+                        />
+                        <textarea
+                          className="w-full bg-transparent outline-none resize-none min-h-[60px] mb-2 font-['Crimson_Text',_serif]"
+                          value={editContent}
+                          onChange={(e) => setEditContent(e.target.value)}
+                          rows={2}
+                        />
+                        <div className="flex gap-2 justify-end">
+                          <button
+                            type="button"
+                            className="px-3 py-1 rounded bg-green-700 text-white"
+                            onClick={() => handleSaveEdit(note.id)}
+                          >
+                            Save
+                          </button>
+                          <button
+                            type="button"
+                            className="px-3 py-1 rounded bg-gray-700 text-white"
+                            onClick={handleCancelEdit}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="font-bold text-lg mb-2 font-['EB_Garamond',_serif]">
+                          {note.title}
+                        </div>
+                        <div className="text-stone-300 text-sm font-['Crimson_Text',_serif]">
+                          {note.content}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ))}
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  );
+}
+````

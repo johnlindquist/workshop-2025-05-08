@@ -1,0 +1,97 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Note-Taking App Monorepo - Project Rules
+
+## 1. Project Overview
+goal: Provide a lightweight, accessible note-taking solution inspired by Google Keep, accessible on web, mobile, and as a VS Code extension. Focus on simplicity, cross-platform usability, and fast sync.
+type: Monorepo (Web Application, Mobile App, VS Code Extension, Backend API)
+key features:
+- Create, edit, delete, and sync notes across platforms
+- Simple, intuitive UI (Next.js, Tailwind, shadcn/ui)
+- Fast, globally distributed backend (Cloudflare Workers, Hono)
+- State management with Zustand
+- Type-safe, tested codebase (TypeScript, Vitest)
+
+## 2. Technology Stack
+language(s): TypeScript 5.x everywhere
+framework(s): Next.js 14+ (App Router), React 18+, Hono (Cloudflare Workers)
+ui library/styling: Tailwind CSS, shadcn/ui, Lucide, Headless UI
+state management: Zustand
+api layer: REST (Hono on Cloudflare Workers)
+database(s): Cloudflare KV (primary), D1 (optional/future)
+key libraries:
+- zod (validation)
+- react-hook-form (forms)
+- @tanstack/react-query (data fetching/caching)
+- next-auth (optional, for auth)
+- @biomejs/biome (formatting/linting)
+- vitest (testing)
+
+## 3. Project Structure
+main source directory: apps/, backend/, packages/, libs/
+core directories:
+- apps/: User-facing applications (web, mobile, VS Code extension)
+- backend/: API and backend logic (Hono on Cloudflare Workers)
+- packages/: Independently versionable/publishable packages (shared logic, UI components)
+- libs/: Internal shared libraries, utilities, hooks, and logic
+- docs/: Documentation, diagrams, requirements
+- .husky/: Git hooks (pre-commit formatting/linting)
+- .biome.json, biome.json: Biome config (formatting/linting)
+- tsconfig.json, tsconfig.base.json: TypeScript config
+- pnpm-workspace.yaml: Monorepo workspace config
+diagram/link: See [User Flow Diagram](docs/diagrams/user-interactions.md) and [Webpage Events](docs/diagrams/webpage-events.md)
+
+## 4. Coding Standards & Conventions
+language usage: Strict TypeScript, functional React components, async/await, avoid any
+naming conventions:
+- files/folders: kebab-case
+- components: PascalCase
+- variables/functions: camelCase
+- types/interfaces: PascalCase
+code style/formatting: Biome (see .biome.json, biome.json)
+comments: English only, minimal, JSDoc for public APIs
+imports: Absolute paths (@/), grouped/sorted (stdlib, external, internal)
+
+## 5. Key Principles & Best Practices
+- Simplicity: Favor simple, composable modules and clear separation of concerns
+- Observability: Add logging at key points (API, state changes, errors)
+- Cross-Platform: Design shared logic for reuse across web, mobile, and VS Code extension
+- Testing: Write tests for all logic; maintain high coverage
+- Formatting: Enforce consistent code style with Biome and pre-commit hooks
+- Security: Validate all input (zod), use HTTPS, manage secrets securely
+- Scalability: Use Cloudflare-native solutions for global reach and low latency
+
+## 6. Testing
+framework: Vitest
+types: Unit tests for logic, integration tests for API, E2E tests (Playwright/Cypress, optional)
+location: Co-located with source files (*.test.ts), or in test/ directories
+
+## 7. Tooling & Workflow
+package manager: pnpm
+build command(s): pnpm build, pnpm -r run build
+run command(s): pnpm dev (per app), pnpm -r run dev
+version control: Git, Conventional Commits recommended, PRs to main branch
+ci/cd: GitHub Actions (lint, test, build, deploy)
+
+## 8. (Optional) Database / API Guidelines
+- Use Cloudflare KV for note storage (simple key-value)
+- Use zod for input validation (frontend and backend)
+- RESTful API design (JSON over HTTPS)
+- JWT-based authentication (optional, via @hono/jwt)
+- CORS configured with @hono/cors
+
+## 9. (Optional) Specific Feature Rules
+- State management: Use Zustand for local/global state in React apps
+- UI: Use shadcn/ui and Tailwind for all new UI components
+- Testing: All new logic must have unit tests (Vitest)
+- Formatting: All code must pass Biome formatting/linting before commit (enforced by Husky)
+
+## 10. (Optional) Rule Referencing
+- See [docs/TECH_STACK.md](docs/TECH_STACK.md) for detailed tech stack
+- See [docs/STRUCTURE.md](docs/STRUCTURE.md) for structure best practices
+- See [docs/PRD.md](docs/PRD.md) for product requirements
+- See [docs/diagrams/user-interactions.md](docs/diagrams/user-interactions.md) for user flow
+- See [docs/diagrams/webpage-events.md](docs/diagrams/webpage-events.md) for event flow

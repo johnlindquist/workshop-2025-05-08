@@ -55,4 +55,47 @@ See [`docs/TECH_STACK.md`](docs/TECH_STACK.md) for full details.
 
 ---
 
+## Gothic Mock Web App Design (2025-05-08)
+
+The web app now implements the **Gothic Mock** design, inspired by Google Keep:
+
+- **Features:**
+  - Create, edit, and delete notes
+  - Pin notes (future)
+  - Search notes (future)
+  - Theme toggle (future)
+  - Fast, keyboard-friendly UI
+  - State managed with Zustand
+  - Form validation with zod + react-hook-form
+  - All actions are logged to the console for observability
+- **Tech:** Next.js 14+, Tailwind CSS, shadcn/ui, Zustand, zod, Vitest
+- **Location:** All main UI in `apps/web/app/page.tsx` and `apps/web/components/ui/`
+- **Mock data:** `apps/web/mocks/notes.ts`, store logic in `apps/web/store/notes.ts`
+
+### Running the Web App
+
+```sh
+pnpm install
+pnpm --filter ./apps/web dev
+```
+
+- The app will be available at http://localhost:3000 or the next available port.
+- All gothic mock features are available by default.
+
+### Development
+- UI components: `apps/web/components/ui/`
+- State/store: `apps/web/store/notes.ts`
+- Tests: colocated in `__tests__` folders, run with `pnpm test`
+- See [docs/mocks/gothic.md](docs/mocks/gothic.md) for the original design mock
+- See [docs/diagrams/user-interactions.md](docs/diagrams/user-interactions.md) for user flow
+- See [docs/diagrams/webpage-events.md](docs/diagrams/webpage-events.md) for event flow
+
+### Testing
+```sh
+pnpm --filter ./apps/web test
+```
+- All gothic mock features are covered by Vitest tests.
+
+---
+
 For more, see [`docs/STRUCTURE.md`](docs/STRUCTURE.md) and [`docs/TECH_STACK.md`](docs/TECH_STACK.md). 
