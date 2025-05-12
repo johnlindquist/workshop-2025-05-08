@@ -1,6 +1,7 @@
 import "jsdom-global/register";
 import "@testing-library/jest-dom";
-import { server } from './apps/web/mocks/server'; // Import the node server
+import { afterAll, afterEach, beforeAll } from "vitest"; // Added vitest imports
+import { server } from "./apps/web/mocks/server"; // Import the node server
 
 // Establish API mocking before all tests.
 beforeAll(() => server.listen());

@@ -76,7 +76,7 @@ async function fetchApi<T>(
  * Fetches all notes.
  */
 export const getNotes = (): Promise<Note[]> => {
-  return fetchApi(`${API_BASE_URL}/notes`, { method: "GET" }, NotesArraySchema);
+  return fetchApi(`${API_BASE_URL}/notes`, NotesArraySchema, { method: "GET" });
 };
 
 /**
@@ -84,21 +84,17 @@ export const getNotes = (): Promise<Note[]> => {
  */
 export const getNoteById = (noteId: string): Promise<Note> => {
   if (!noteId) throw new Error("Note ID is required.");
-  return fetchApi(`${API_BASE_URL}/notes/${noteId}`, { method: "GET" }, NoteSchema);
+  return fetchApi(`${API_BASE_URL}/notes/${noteId}`, NoteSchema, { method: "GET" });
 };
 
 /**
  * Creates a new note.
  */
 export const createNote = (payload: CreateNotePayload): Promise<Note> => {
-  return fetchApi(
-    `${API_BASE_URL}/notes`,
-    {
-      method: "POST",
-      body: JSON.stringify(payload),
-    },
-    NoteSchema,
-  );
+  return fetchApi(`${API_BASE_URL}/notes`, NoteSchema, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
 };
 
 /**
@@ -106,14 +102,10 @@ export const createNote = (payload: CreateNotePayload): Promise<Note> => {
  */
 export const updateNote = (noteId: string, payload: UpdateNotePayload): Promise<Note> => {
   if (!noteId) throw new Error("Note ID is required for update.");
-  return fetchApi(
-    `${API_BASE_URL}/notes/${noteId}`,
-    {
-      method: "PUT",
-      body: JSON.stringify(payload),
-    },
-    NoteSchema,
-  );
+  return fetchApi(`${API_BASE_URL}/notes/${noteId}`, NoteSchema, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
 };
 
 /**
@@ -123,5 +115,5 @@ export const deleteNote = (noteId: string): Promise<void> => {
   if (!noteId) throw new Error("Note ID is required for delete.");
   // Use z.undefined() for the schema as fetchApi expects a schema,
   // and it returns undefined for 204 responses.
-  return fetchApi(`${API_BASE_URL}/notes/${noteId}`, { method: "DELETE" }, z.undefined());
+  return fetchApi(`${API_BASE_URL}/notes/${noteId}`, z.undefined(), { method: "DELETE" });
 };

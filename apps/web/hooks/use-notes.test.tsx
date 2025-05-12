@@ -1,16 +1,16 @@
-import { describe, it, expect, beforeEach } from "vitest";
-import { renderHook, waitFor } from "@testing-library/react";
+import type { CreateNotePayload, Note, UpdateNotePayload } from "@repo/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import React from "react";
+import { renderHook, waitFor } from "@testing-library/react";
 import { http, HttpResponse } from "msw";
+import type React from "react";
+import { beforeEach, describe, expect, it } from "vitest";
 import { server } from "../mocks/server";
-import type { Note, CreateNotePayload, UpdateNotePayload } from "@repo/types";
 import {
-  useGetNotes,
-  useGetNoteById,
   useCreateNote,
-  useUpdateNote,
   useDeleteNote,
+  useGetNoteById,
+  useGetNotes,
+  useUpdateNote,
 } from "./use-notes";
 
 // Mock data

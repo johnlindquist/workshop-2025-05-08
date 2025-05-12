@@ -41,3 +41,10 @@ Run `pnpm -w tsc --noEmit` (or `pnpm -r tsc --noEmit`) to ensure no type errors 
 
 **Description:**
 Based on `docs/openapi.yaml`
+
+---
+
+## Commit 5: test: Write/update Vitest tests for API type conformity and data fetching ✅ 4ae5d97
+
+**Description:**
+// ... existing code ...
