@@ -3,18 +3,45 @@ description:
 globs:
 alwaysApply: false
 ---
-## Task Execution Guidance
+## Task Execution Workflow
 
-Execute instructions provided in an included task file (e.g., `<task>.md`).*
+**Primary Goal:** Execute the step-by-step plan defined in the provided task file (e.g., `docs/tasks/<YYYY-MM-DD-task-name>.md`).
 
-- Follow the instructions in the included `<task>.md` file *exactly* as given.
-- Before each commit, perform the specified **Verification** step(s) for that commit.
-- After each successful `git commit`, update the corresponding commit title line in the `<task>.md` file with a ✅ emoji and the commit SHA hash.
+**For Each Commit in the Task File:**
 
-After commiting, automatically proceed to the next commit without asking for me input.
+1.  **Implement:** Execute the instructions for the current commit precisely as written.
+2.  **Verify:** Before committing, perform *all* specified **Verification** steps for that commit. Confirm success.
+3.  **Commit:** Stage the changes and create the commit using the specified message.
+4.  **Update Task File:** After the `git commit` succeeds, edit the task file:
+    *   Append a ✅ emoji and the full commit SHA hash to the corresponding commit title line.
+    *   Example: `## Commit 1: feat: Implement user login ✅ a1b2c3d4e5f6...`
+5.  **Proceed:** Immediately move to the next commit in the task file without requesting feedback. Continue until all commits are processed.
 
-## After Task Completion
+**Definition of "Task Done":**
 
-Once the task is complete, run the `.cursor/rules/update-project.mdc` with the following information:
-1. Failures that could have been avoided
-2. Changes to project behavior or expectations
+A task is considered "Done" *only* when all three conditions are met:
+1.  All commits outlined in the task file have been successfully created.
+2.  All automated tests associated with the changes pass.
+3.  All specified verification steps for every commit have been successfully performed.
+
+**After the Entire Task is Done:**
+
+1.  Load and follow the instructions in the `.cursor/rules/project-update-rules.mdc` file.
+2.  Provide the following information when prompted by the rule:
+    *   Any failures encountered during the task that could have been prevented.
+    *   Any significant changes to project behavior or developer expectations resulting from the task.
+
+**Output Constraints:**
+
+*   **No Conversational Output:** Do not add commentary, summaries, or status updates between commits.
+*   **Focus on Execution:** Your only outputs should be the results of commands, file changes, the final commit SHAs added to the task file, and the information provided to the `project-update-rules.mdc` rule.
+*   **Avoid:** Do not output messages like the following example:
+    ```
+    <bad_example>
+    Commit 1 complete and verified.
+    All test timeouts reduced, excessive logging added, and verification steps performed.
+    Proceeding to Commit 2: tackle smoke.test.ts for robust, fast cleanup and socket removal.
+    </bad_example>
+    ```
+
+**REMEMBER:** Execute the task plan precisely, verify each step, update the task file after each commit, and proceed automatically until the entire task is done.
