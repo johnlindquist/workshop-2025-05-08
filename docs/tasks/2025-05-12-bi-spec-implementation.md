@@ -22,7 +22,7 @@ Review the documented metrics for clarity, measurability, and relevance to the p
 
 ---
 
-## Commit 3: chore: Set up backend logging for API usage and errors
+## Commit 3: chore: Set up backend logging for API usage and errors ✅ 9cbf803
 **Description:**
 Implement logging in the Hono backend (`backend/src/`) to capture API request/response details and errors. This will facilitate tracking the metrics defined in Commit 2. Use `@hono/logger` as specified in `docs/TECH_STACK.md`. Ensure logs include enough detail (endpoint, status code, timestamp, potentially anonymized user identifiers if applicable and compliant with privacy) to calculate success metrics. Logs should be structured for potential future ingestion into a more advanced logging/monitoring system if needed.
 
