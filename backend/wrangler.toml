@@ -1,7 +1,19 @@
-name = "backend"
-main = "dist/index.js"
-compatibility_date = "2025-05-07"
+name = "notes-api"
+main = "src/index.ts"
+compatibility_date = "2023-09-01"
 
-[[kv_namespaces]]
-binding = "NOTES"
-id = "dev-notes-namespace" 
+# Environment variables
+[vars]
+# Add environment variables here when needed
+
+# KV Namespaces
+# Uncomment when implementing KV storage
+# [[kv_namespaces]]
+# binding = "NOTES_KV"
+# id = "..."
+# preview_id = "..."
+
+# Dev environment settings
+[dev]
+port = 8787
+local = true 
