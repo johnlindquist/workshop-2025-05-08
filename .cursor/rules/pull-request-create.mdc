@@ -6,21 +6,42 @@ alwaysApply: false
 
 # Create a Pull Request
 
-1. Check `.gitignore` and staged files:
-   - Read the `.gitignore` file.
-   - Review all files added to this branch so far.
-   - If any files should obviously not be committed:
-     - Update `.gitignore` accordingly.
-     - Remove those files from git.
+0.  **Check for Unstaged Changes:**
+    *   Execute `git status` to identify any modified or new files that are not yet staged.
+    *   Review the list of unstaged files.
+    *   If any relevant changes intended for this pull request are unstaged, stage them using `git add <file>...` or `git add .`.
+    *   Confirm via `git status` that all intended changes are now staged.
 
-2. Write the pull request summary:
-   - Summarize everything from this conversation.
-   - Save the summary to `docs/pr/pr-body-file-<branch-name>.md` (replace `<branch-name>` with the actual branch name).
+1.  **Audit Staged Files:**
+    *   Verify `.gitignore` is up-to-date and correctly excludes unwanted files.
+    *   Execute `git status` again to review the final list of staged files.
+    *   Identify any files (e.g., secrets, build artifacts, logs, temporary files) that should *not* be committed. Legitimate config/tooling files (like `.vscode/`, `.cursor/`, `.editorconfig`) are usually okay.
+    *   If inappropriate files are found staged:
+        *   Add specific patterns for them to `.gitignore`.
+        *   Unstage them using `git reset HEAD <file>...`.
+        *   If they are already tracked, remove them from git tracking using `git rm --cached <file>...`.
+        *   If they are untracked, ensure they are ignored or delete them if necessary.
+    *   Confirm via `git status` that only intended files remain staged for the commit.
 
-3. Create the pull request using the `gh` CLI:
-   - Use the `gh pr create` command.
-   - Fill in the title.
-   - Use `--body-file ./docs/pr/pr-body-file-<branch-name>.md` for the body.
+2.  **Draft Pull Request Body:**
+    *   Create or update the file: `docs/pr/pr-body-file-<branch-name>.md` (replace `<branch-name>` with the actual current branch name).
+    *   **Structure the body clearly:** Use Markdown headings like `## Summary`, `## Key Changes`, `## Testing Done`, `## Related Issues`.
+    *   **Lead with the main goal:** Start the summary with a concise statement of the PR's primary purpose.
+    *   **Detail key changes:** Use bullet points (`* ` or `- `) to list the significant additions, fixes, or features implemented. Be specific about files or modules affected.
+    *   **Provide context:** Explain the 'why' behind the changes. Link to relevant issue trackers (e.g., `Fixes #123`, `Related to #456`).
+    *   **Describe verification:** Detail the testing performed (unit, integration, manual) or provide steps for reviewers to verify the changes.
+    *   Save the completed body file.
+
+3.  **Run Project Update Rules:**
+    *   Locate and carefully read the `./cursor/rules/project-update-rules.mdc` file.
+    *   Execute all instructions specified within that file precisely.
+
+4.  **Create Pull Request via `gh` CLI:**
+    *   Execute the command: `gh pr create`
+    *   **Set a clear, concise title:** The title must accurately reflect the main change, ideally following conventional commit standards (e.g., `feat: Implement user authentication flow`). Lead with the core change.
+    *   **Use the drafted body file:** Add the argument `--body-file docs/pr/pr-body-file-<branch-name>.md`.
+    *   **Review before submitting:** Carefully check the preview of the title and body provided by `gh pr create` for accuracy, clarity, and completeness.
+    *   **REMEMBER:** The objective is to open a well-formed Pull Request on GitHub using the prepared title and body.
 
 Example:
 ```bash
