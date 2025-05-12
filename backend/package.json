@@ -1,0 +1,27 @@
+{
+  "name": "@app/backend",
+  "version": "1.0.0",
+  "description": "Backend API for Notes App",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "tsc",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@app/types": "workspace:*",
+    "hono": "^3.12.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240320.0",
+    "typescript": "^5.2.2",
+    "vitest": "^1.2.0",
+    "wrangler": "^3.32.0"
+  }
+}
