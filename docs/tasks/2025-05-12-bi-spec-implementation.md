@@ -9,7 +9,7 @@ Deploy the changes to a staging environment or test locally. Verify in the Cloud
 
 ---
 
-## Commit 2: feat: Define and document initial technical success metrics
+## Commit 2: feat: Define and document initial technical success metrics ✅ 4b45937
 **Description:**
 Based on `docs/PRD.md` (Section 7: Success Metrics), define an initial set of technical success metrics. This involves creating or updating a section in `docs/PRD.md` or a new file (e.g., `docs/SUCCESS_METRICS.md`). Metrics should include:
 - API endpoint usage (e.g., count of `/notes` POST, GET requests, referencing `docs/openapi.yaml`).
@@ -51,4 +51,4 @@ Explore options for visualizing the key metrics. If Cloudflare Analytics provide
 
 **Verification:**
 <!-- TODO: Specify how to verify the dashboard/report stub. If it's a configured Cloudflare dashboard, verify it shows some data. If it's a script, run it and check its output. If it's a document, review its structure. -->
-Verify that the chosen method for visualizing or reporting metrics is accessible and provides a basic overview of the defined success metrics. 
+Verify that the chosen method for visualizing or reporting metrics is accessible and provides a basic overview of the defined success metrics.
