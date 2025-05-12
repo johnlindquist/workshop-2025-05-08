@@ -3,8 +3,24 @@ description:
 globs:
 alwaysApply: false
 ---
-- Write a summary of everything from this conversation to `docs/pr/pr-body-file-<branch-name>.md` (use the actual branch name).
-- Use the `gh` CLI to create a Pull Request, fill the title, etc., and use `--body-file ./docs/pr-body-file-<branch-name>.md`.
+
+# Create a Pull Request
+
+1. Check `.gitignore` and staged files:
+   - Read the `.gitignore` file.
+   - Review all files added to this branch so far.
+   - If any files should obviously not be committed:
+     - Update `.gitignore` accordingly.
+     - Remove those files from git.
+
+2. Write the pull request summary:
+   - Summarize everything from this conversation.
+   - Save the summary to `docs/pr/pr-body-file-<branch-name>.md` (replace `<branch-name>` with the actual branch name).
+
+3. Create the pull request using the `gh` CLI:
+   - Use the `gh pr create` command.
+   - Fill in the title.
+   - Use `--body-file ./docs/pr/pr-body-file-<branch-name>.md` for the body.
 
 Example:
 ```bash

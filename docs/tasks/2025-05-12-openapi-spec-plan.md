@@ -1,6 +1,6 @@
 # Task: Define OpenAPI Specification for Note-Taking App
 
-## Commit 1: feat: Initialize OpenAPI specification with basic info and server config
+## Commit 1: feat: Initialize OpenAPI specification with basic info and server config ✅ 2b3e39e
 **Description:**
 Create `docs/openapi.yaml` with OpenAPI version 3.0.3.
 Define the `info` block:
@@ -20,7 +20,7 @@ Define the `servers` block:
 
 ---
 
-## Commit 2: feat: Define core 'Note' schema and tags
+## Commit 2: feat: Define core 'Note' schema and tags ✅ 5502572
 **Description:**
 In `docs/openapi.yaml`, add the `tags` section:
 - `name`: "Notes"
@@ -40,7 +40,7 @@ Define the `components.schemas` section with a `Note` schema. Based on `docs/PRD
 
 ---
 
-## Commit 3: feat: Define CRUD endpoints for Notes
+## Commit 3: feat: Define CRUD endpoints for Notes ✅ 70ee4de
 **Description:**
 In `docs/openapi.yaml`, define paths for CRUD operations on notes under the `/notes` endpoint, using the "Notes" tag and `Note` schema:
 - `POST /notes`: Create a new note.
@@ -67,7 +67,7 @@ In `docs/openapi.yaml`, define paths for CRUD operations on notes under the `/no
 
 ---
 
-## Commit 4: feat: Define security schemes for API authentication
+## Commit 4: feat: Define security schemes for API authentication ✅ 20d0a42
 **Description:**
 Based on `docs/TECH_STACK.md` (mentions `@hono/jwt` for JWT authentication and "JWT-based authentication for API endpoints"), define security schemes in `docs/openapi.yaml`:
 Add `components.securitySchemes`:
@@ -88,7 +88,7 @@ This will apply JWT authentication to all endpoints by default.
 
 ---
 
-## Commit 5: chore: Review and validate final OpenAPI specification
+## Commit 5: chore: Review and validate final OpenAPI specification ✅ d285796
 **Description:**
 Thoroughly review the entire `docs/openapi.yaml` for consistency, correctness, and completeness.
 - Ensure all descriptions are clear and accurate.
