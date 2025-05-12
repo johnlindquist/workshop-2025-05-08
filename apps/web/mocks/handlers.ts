@@ -8,7 +8,7 @@ const mockNotes = new Map<string, Note>();
 // Seed with some initial data (adjust as needed)
 const initialMockNotes: Note[] = [
     {
-        id: uuidv4(),
+        id: "a1b2c3d4-e5f6-7890-1234-567890abcdef", // Fixed UUID
         title: "First Mock Scroll",
         content: "This is the first note stored in the mock service worker.",
         pinned: true,
@@ -17,7 +17,7 @@ const initialMockNotes: Note[] = [
         updatedAt: new Date().toISOString(),
     },
     {
-        id: uuidv4(),
+        id: "b2c3d4e5-f6a7-8901-2345-67890abcdef0", // Fixed UUID
         title: "Second Mock Scroll",
         content: "Another entry in the annals of mock data.",
         pinned: false,

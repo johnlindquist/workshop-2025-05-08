@@ -37,25 +37,7 @@ Run `pnpm -w tsc --noEmit` (or `pnpm -r tsc --noEmit`) to ensure no type errors 
 
 ---
 
-## Commit 4: chore: Add/update mock API handlers for development and testing
+## Commit 4: chore: Add/update mock API handlers for development and testing ✅ 247631c
 
 **Description:**
-Based on `docs/openapi.yaml` and the new types in `packages/types/src/api-types.ts`, update or create mock API handlers. If using a library like MSW (Mock Service Worker), update the handlers in `apps/web/mocks/handlers.ts` (or a similar location).
-These mocks should cover all defined endpoints (`/notes` GET, POST; `/notes/{noteId}` GET, PUT, DELETE) and return data consistent with the `Note` schema and other response schemas.
-This ensures a consistent development and testing experience as outlined by the project's emphasis on testing in `docs/PRD.md`.
-
-**Verification:**
-Ensure the application runs correctly with the mock handlers enabled (`pnpm dev` in `apps/web`). Manually test all CRUD operations (Create, Read, Update, Delete notes) in the UI to verify the mock handlers are responding correctly according to `docs/openapi.yaml`. If unit/integration tests exist for API interactions (e.g., in Vitest), ensure they pass using these mock handlers.
-
----
-
-## Commit 5: test: Write/update Vitest tests for API type conformity and data fetching
-
-**Description:**
-Create or update Vitest unit/integration tests (`*.test.ts` files co-located with source or in test directories, as per `docs/TECH_STACK.md`) for:
-1.  The API client functions/hooks created/updated in Commit 2. These tests should verify that the functions make correct API calls (method, URL, body) and that their outputs (after Zod validation) conform to the `packages/types/src/api-types.ts`.
-2.  Components (from Commit 3) to ensure they correctly handle data conforming to the new API types.
-These tests will use the mock handlers from Commit 4. Focus on ensuring data integrity between the frontend's expectations and the OpenAPI defined structures.
-
-**Verification:**
-Run `pnpm test` (or `pnpm -r test` and specifically `pnpm test --filter web`) to ensure all new and existing tests pass. Review test coverage reports (if available) to confirm adequate testing of the new types and data fetching logic. Ensure tests cover successful cases, error handling (e.g., 404 Not Found), and validation failures. 
+Based on `docs/openapi.yaml`
