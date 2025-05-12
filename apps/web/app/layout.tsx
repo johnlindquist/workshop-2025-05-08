@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import MSWComponent from "@/components/providers/msw-component";
 import QueryProvider from "@/components/providers/query-provider";
 
 const DEBUG_UI = typeof process !== "undefined" && process.env.NEXT_PUBLIC_DEBUG_UI === "true";
@@ -55,7 +56,9 @@ export default function RootLayout({
             </div>
           </div>
         )}
-        <QueryProvider>{children}</QueryProvider>
+        <MSWComponent>
+          <QueryProvider>{children}</QueryProvider>
+        </MSWComponent>
       </body>
     </html>
   );

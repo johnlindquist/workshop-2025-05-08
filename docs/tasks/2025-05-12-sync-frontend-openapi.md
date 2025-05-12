@@ -24,7 +24,7 @@ Run `pnpm -w tsc --noEmit` (or `pnpm -r tsc --noEmit`) to confirm type correctne
 
 ---
 
-## Commit 3: refactor: Update frontend components to use new API types and data fetching logic
+## Commit 3: refactor: Update frontend components to use new API types and data fetching logic ✅ c18b11d
 
 **Description:**
 Identify all React components in `apps/web/components/` and `apps/web/app/` that interact with note data (e.g., displaying notes, creating notes, editing notes).

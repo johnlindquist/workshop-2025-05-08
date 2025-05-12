@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from "react";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools"; // Optional
 
 function QueryProvider({ children }: { children: React.ReactNode }) {

@@ -4,6 +4,7 @@ import { MoreVerticalIcon, RedoIcon, UndoIcon } from "@/components/gothic/Custom
 import { IconWrapper } from "@/components/gothic/IconWrapper";
 import { NavItem } from "@/components/gothic/NavItem";
 import { NoteCard } from "@/components/gothic/NoteCard";
+import { useCreateNote, useDeleteNote, useGetNotes, useUpdateNote } from "@/hooks/use-notes";
 import type { Note } from "@repo/types";
 import {
   AlertTriangle,
@@ -35,7 +36,6 @@ import React, {
   FocusEvent,
   type KeyboardEvent,
 } from "react";
-import { useGetNotes, useCreateNote, useUpdateNote, useDeleteNote } from "@/hooks/use-notes";
 
 export default function GothicPage() {
   const [searchTerm, setSearchTerm] = useState("");
