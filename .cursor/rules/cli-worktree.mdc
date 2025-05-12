@@ -6,6 +6,8 @@ alwaysApply: false
 To manage worktrees, use the `wt` cli
 If it fails to run, you may need to install `https://www.npmjs.com/package/@johnlindquist/worktree` globally
 
+Assume the user wants to create a new worktree based on their input unless they specify otherwise.
+
 Usage: wt [options] [command]
 
 Manage git worktrees and open them in the Cursor editor.
