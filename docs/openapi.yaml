@@ -37,6 +37,18 @@ components:
           readOnly: true
       required:
         - content # Assuming content is required, title is optional.
+    ErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        message:
+          type: string
+          description: A human-readable error message
+        error:
+          type: string
+          description: (Optional) A short error code or type (e.g., "Not Found", "Validation Error")
   securitySchemes:
     bearerAuth:
       type: http
@@ -107,6 +119,10 @@ paths:
                 $ref: '#/components/schemas/Note'
         '404':
           description: Note not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     put:
       tags:
         - Notes
@@ -140,6 +156,10 @@ paths:
                 $ref: '#/components/schemas/Note'
         '404':
           description: Note not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     delete:
       tags:
         - Notes
@@ -156,4 +176,8 @@ paths:
         '204':
           description: Note deleted successfully
         '404':
-          description: Note not found 
+          description: Note not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse' 
