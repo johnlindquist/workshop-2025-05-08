@@ -41,4 +41,13 @@ This document outlines the monitoring and analytics setup for the project.
     - Response Status Code (`200`, `404`, `500`)
     - Response Time (e.g., `15ms`)
 - **Access:** Logs are currently output to the standard console where the backend worker/server is running. In a Cloudflare Workers deployment, these can be viewed using `wrangler tail` or within the Cloudflare dashboard logs.
-- **Future:** Logs are formatted simply for console output but could potentially be structured (e.g., JSON) and forwarded to a dedicated logging service if needed. 
+- **Future:** Logs are formatted simply for console output but could potentially be structured (e.g., JSON) and forwarded to a dedicated logging service if needed.
+
+## 4. Metrics Visualization & Reporting
+
+- **Current Approach:** Key technical success metrics (API usage, error rates, API response times) defined in `docs/PRD.md` are currently derived from backend logs.
+- **Manual Compilation:** Initially, these metrics will be compiled manually by:
+    - Analyzing Cloudflare Analytics for frontend performance (Page Load Time).
+    - Analyzing backend logs (e.g., using `wrangler tail` or Cloudflare dashboard log views) to count specific requests (e.g., `POST /notes`), identify status codes (for error rates), and potentially extract response times.
+    - Simple command-line tools (`grep`, `awk`) can be used on log files for basic counting if logs are exported.
+- **Future Dashboarding:** A dedicated dashboard (e.g., within Cloudflare, Grafana, or another BI tool) is planned for future iterations to provide automated and real-time visibility into these metrics. 
