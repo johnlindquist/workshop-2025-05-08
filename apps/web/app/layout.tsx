@@ -59,6 +59,13 @@ export default function RootLayout({
         <MSWComponent>
           <QueryProvider>{children}</QueryProvider>
         </MSWComponent>
+        {/* Cloudflare Web Analytics */}
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          // TODO: Replace YOUR_TOKEN_HERE with the actual token from the Cloudflare dashboard
+          data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'
+        />
       </body>
     </html>
   );

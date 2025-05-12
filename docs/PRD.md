@@ -51,7 +51,27 @@
 <!-- TODO: Are there any additional non-functional requirements (performance, scalability, security, reliability) or constraints (infrastructure, budget)? -->
 
 ## 7. Success Metrics (Technical Viewpoint)
-<!-- TODO: How will the development team measure technical success post-deployment (e.g., system stability, error rates, performance metrics)? -->
+- **API Endpoint Usage:**
+  - Count of `POST /notes` requests (Note Creations)
+  - Count of `GET /notes` requests (Note List Fetches)
+  - Count of `GET /notes/{noteId}` requests (Specific Note Fetches)
+  - Count of `PUT /notes/{noteId}` requests (Note Updates)
+  - Count of `DELETE /notes/{noteId}` requests (Note Deletions)
+  *Reference: See `docs/openapi.yaml` for endpoint details.*
+- **API Error Rates:**
+  - Percentage of 4xx Client Errors for key API endpoints (`/notes`, `/notes/{noteId}`).
+  - Percentage of 5xx Server Errors for key API endpoints (`/notes`, `/notes/{noteId}`).
+  *Target: Keep 5xx error rate below 0.1%.*
+- **Application Performance:**
+  - Average Page Load Time (LCP - Largest Contentful Paint) for the main web application page.
+  *Target: Below 2.5 seconds (as measured by Cloudflare Analytics or similar tool).*
+  - API Response Time (P95) for `GET /notes`.
+  *Target: Below 500ms.*
+- **Core Functionality Success Rates:**
+  - Note Creation Success Rate: (Successful `POST /notes` requests) / (Total `POST /notes` requests)
+  *Target: > 99.9%*
+  - Note Sync Success Rate: (Metrics TBD - requires understanding sync mechanism, potentially based on client-side error reporting or backend consistency checks).
+  *Initial Focus: Track API success rates as a proxy.*
 
 ## 8. Development Logistics & Lookahead
 - Major assumptions: Simplicity and cross-platform usability are achievable with the chosen stack.

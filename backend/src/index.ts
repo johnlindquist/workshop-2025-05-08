@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { logger } from "hono/logger";
 import { notesRoutes } from "./routes/notes";
 
 // Define the type for environment bindings
@@ -11,6 +12,9 @@ type Bindings = {
 
 // Create Hono app instance
 const app = new Hono<{ Bindings: Bindings }>();
+
+// Add logger middleware (should be early)
+app.use("*", logger());
 
 // Configure CORS middleware
 app.use(
