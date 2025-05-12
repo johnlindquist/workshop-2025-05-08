@@ -37,6 +37,14 @@ components:
           readOnly: true
       required:
         - content # Assuming content is required, title is optional.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
 
 paths:
   /notes:
