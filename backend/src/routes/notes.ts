@@ -1,8 +1,8 @@
+import type { CreateNotePayload, UpdateNotePayload } from "@repo/types";
 import { Hono } from "hono";
+import type { Context, Next } from "hono";
 import { z } from "zod";
 import { NoteService } from "../services/noteService";
-import { CreateNotePayload, UpdateNotePayload } from "@repo/types";
-import { Context, Next } from "hono";
 
 // Create a router for notes endpoints
 const notesRoutes = new Hono();

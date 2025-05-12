@@ -10,7 +10,7 @@ Run `pnpm -r tsc --noEmit` to ensure the new/updated types in `packages/types/sr
 
 ---
 
-## Commit 2: feat: Update frontend data fetching hooks/services to align with OpenAPI paths and methods
+## Commit 2: feat: Update frontend data fetching hooks/services to align with OpenAPI paths and methods ✅ eea33eb
 
 **Description:**
 Review existing frontend data fetching logic, likely using `@tanstack/react-query` as specified in `docs/TECH_STACK.md`. This logic might be in `apps/web/lib/api.ts`, `apps/web/hooks/useNotes.ts`, or similar files.
