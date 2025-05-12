@@ -7,4 +7,33 @@ servers:
   - url: "https://api.yourdomain.com/v1"
     description: "Production Server"
   - url: "http://localhost:8787/v1"
-    description: "Local Development Server" 
+    description: "Local Development Server"
+
+tags:
+  - name: "Notes"
+    description: "Operations related to notes."
+
+components:
+  schemas:
+    Note:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        title:
+          type: string
+        content:
+          type: string
+          description: "The main body of the note."
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - content # Assuming content is required, title is optional. 
