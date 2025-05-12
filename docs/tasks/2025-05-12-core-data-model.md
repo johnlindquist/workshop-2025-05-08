@@ -1,6 +1,6 @@
 # Task: Implement Core Data Model for Notes App
 
-## Commit 1: feat: Create shared Note type package
+## ✅ Commit 1: feat: Create shared Note type package (48d975e)
 
 **Description:**
 Create the foundational shared type package that defines the core Note data structure. This involves:
@@ -18,7 +18,7 @@ Create the foundational shared type package that defines the core Note data stru
 
 ---
 
-## Commit 2: feat: Add backend API skeleton with Hono
+## ✅ Commit 2: feat: Add backend API skeleton with Hono (b574c1a)
 
 **Description:**
 Set up the backend API structure with Hono for Cloudflare Workers:
@@ -38,7 +38,7 @@ Set up the backend API structure with Hono for Cloudflare Workers:
 
 ---
 
-## Commit 3: feat: Implement in-memory Note storage for backend
+## ✅ Commit 3: feat: Implement in-memory Note storage for backend (8bdb0c1)
 
 **Description:**
 Implement in-memory storage for Notes to enable CRUD operations:
