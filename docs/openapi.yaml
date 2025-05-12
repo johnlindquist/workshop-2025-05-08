@@ -1,0 +1,10 @@
+openapi: 3.0.3
+info:
+  title: "Note-Taking App API"
+  version: "1.0.0"
+  description: "API for creating, reading, updating, and deleting notes for a cross-platform note-taking application."
+servers:
+  - url: "https://api.yourdomain.com/v1"
+    description: "Production Server"
+  - url: "http://localhost:8787/v1"
+    description: "Local Development Server" 
