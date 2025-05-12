@@ -1,4 +1,4 @@
-import { Note, CreateNoteInput, UpdateNoteInput } from '@app/types';
+import { Note, CreateNotePayload, UpdateNotePayload } from '@repo/types';
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -31,7 +31,7 @@ export class NoteService {
      * @param input Data for creating a new note
      * @returns Promise resolving to the created Note
      */
-    async createNote(input: CreateNoteInput): Promise<Note> {
+    async createNote(input: CreateNotePayload): Promise<Note> {
         const now = new Date();
         const id = uuidv4();
 
@@ -52,7 +52,7 @@ export class NoteService {
      * @param input Data for updating the note
      * @returns Promise resolving to the updated Note, or null if not found
      */
-    async updateNote(id: string, input: UpdateNoteInput): Promise<Note | null> {
+    async updateNote(id: string, input: UpdateNotePayload): Promise<Note | null> {
         const existingNote = this.notes.get(id);
 
         if (!existingNote) {

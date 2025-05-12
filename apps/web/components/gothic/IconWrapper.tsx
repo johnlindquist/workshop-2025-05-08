@@ -8,6 +8,6 @@ type IconWrapperProps = {
   className?: string;
 };
 
-export const IconWrapper = ({ icon: Icon, size = 20, className = "" }) => (
+export const IconWrapper = ({ icon: Icon, size = 20, className = "" }: IconWrapperProps) => (
   <Icon size={size} className={`inline-block ${className}`} />
 );

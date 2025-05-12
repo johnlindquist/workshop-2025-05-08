@@ -72,6 +72,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.0.1
         version: 5.0.1(react-hook-form@7.56.3(react@18.3.0))
+      '@tanstack/react-query':
+        specifier: ^5.76.0
+        version: 5.76.0(react@18.3.0)
       lucide-react:
         specifier: ^0.508.0
         version: 0.508.0(react@18.3.0)
@@ -106,7 +109,7 @@ importers:
 
   backend:
     dependencies:
-      '@app/types':
+      '@repo/types':
         specifier: workspace:*
         version: link:../packages/types
       hono:
@@ -141,12 +144,12 @@ importers:
         specifier: ^3.22.4
         version: 3.24.4
     devDependencies:
+      '@biomejs/biome':
+        specifier: ^1.8.3
+        version: 1.9.4
       typescript:
-        specifier: ^5.2.2
+        specifier: ^5.0.0
         version: 5.8.3
-      vitest:
-        specifier: ^1.2.0
-        version: 1.6.1(@types/node@22.15.17)(jsdom@26.1.0)(lightningcss@1.29.2)
 
 packages:
 
@@ -1310,6 +1313,14 @@ packages:
 
   '@tailwindcss/postcss@4.1.5':
     resolution: {integrity: sha512-5lAC2/pzuyfhsFgk6I58HcNy6vPK3dV/PoPxSDuOTVbDvCddYHzHiJZZInGIY0venvzzfrTEUAXJFULAfFmObg==}
+
+  '@tanstack/query-core@5.76.0':
+    resolution: {integrity: sha512-FN375hb8ctzfNAlex5gHI6+WDXTNpe0nbxp/d2YJtnP+IBM6OUm7zcaoCW6T63BawGOYZBbKC0iPvr41TteNVg==}
+
+  '@tanstack/react-query@5.76.0':
+    resolution: {integrity: sha512-dZLYzVuUFZJkenxd8o01oyFimeLBmSkaUviPHuDzXe7LSLO4WTTx92jwJlNUXOOHzg6t0XknklZ15cjhYNSDjA==}
+    peerDependencies:
+      react: ^18 || ^19
 
   '@testing-library/dom@10.4.0':
     resolution: {integrity: sha512-pemlzrSESWbdAloYml3bAJMEfNh1Z7EduzqPKprCH5S341frlpYnUEW0H72dLxa6IsYr+mPno20GiSm+h9dEdQ==}
@@ -3301,6 +3312,13 @@ snapshots:
       '@tailwindcss/oxide': 4.1.5
       postcss: 8.5.3
       tailwindcss: 4.1.5
+
+  '@tanstack/query-core@5.76.0': {}
+
+  '@tanstack/react-query@5.76.0(react@18.3.0)':
+    dependencies:
+      '@tanstack/query-core': 5.76.0
+      react: 18.3.0
 
   '@testing-library/dom@10.4.0':
     dependencies:

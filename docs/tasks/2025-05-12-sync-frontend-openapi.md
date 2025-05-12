@@ -1,6 +1,6 @@
 # Task: Sync Frontend with OpenAPI Specification
 
-## Commit 1: feat: Define shared API types from OpenAPI spec
+## Commit 1: feat: Define shared API types from OpenAPI spec ✅ 7b3fb43
 
 **Description:**
 Analyze `docs/openapi.yaml` to identify all defined schemas (e.g., `Note`, `ErrorResponse`) and their properties. Create/update TypeScript interfaces or types in `packages/types/src/api-types.ts` (or a similar new file if `api-types.ts` doesn't exist) to match these schemas precisely. This ensures that both frontend and backend can share these type definitions. For example, the `Note` schema with `id`, `title`, `content`, `createdAt`, `updatedAt` properties should be translated into a `Note` interface. Ensure all properties, their types (e.g., `string`, `string | undefined` for optional fields, `date-time` to `string` or `Date`), and `readOnly` attributes are correctly represented. Add JSDoc comments based on descriptions in OpenAPI.
