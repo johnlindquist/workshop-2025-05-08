@@ -4,8 +4,8 @@ import { MoreVerticalIcon, RedoIcon, UndoIcon } from "@/components/gothic/Custom
 import { IconWrapper } from "@/components/gothic/IconWrapper";
 import { NavItem } from "@/components/gothic/NavItem";
 import { NoteCard } from "@/components/gothic/NoteCard";
-import { initialNotesData } from "@/lib/initial-notes";
-import type { Note } from "@/types/note";
+import { useCreateNote, useDeleteNote, useGetNotes, useUpdateNote } from "@/hooks/use-notes";
+import type { Note } from "@repo/types";
 import {
   AlertTriangle,
   Archive,
@@ -38,7 +38,6 @@ import React, {
 } from "react";
 
 export default function GothicPage() {
-  const [notes, setNotes] = useState<Note[]>(initialNotesData);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeNavItem, setActiveNavItem] = useState("Notes");
   const [isTakeNoteFocused, setIsTakeNoteFocused] = useState(false);
@@ -48,6 +47,13 @@ export default function GothicPage() {
   const [theme, setTheme] = useState("dark"); // 'dark' or 'light' (though gothic is dark by nature)
 
   const takeNoteRef = useRef<HTMLDivElement>(null);
+
+  // --- React Query Hooks for Notes ---
+  const { data: notes = [], isLoading: isLoadingNotes, error: notesError } = useGetNotes();
+  const createNoteMutation = useCreateNote();
+  const updateNoteMutation = useUpdateNote();
+  const deleteNoteMutation = useDeleteNote();
+  // --- End React Query Hooks ---
 
   // Handle clicks outside the take note area to blur
   useEffect(() => {
@@ -59,46 +65,83 @@ export default function GothicPage() {
         setIsTakeNoteFocused(false);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside as EventListener);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside as EventListener);
     };
   }, [newNoteTitle, newNoteContent]);
 
   const handleAddNote = () => {
     if (newNoteTitle.trim() === "" && newNoteContent.trim() === "") return;
-    const newNote = {
-      id: Date.now().toString(),
-      title: newNoteTitle || "Untitled Scroll",
-      content: newNoteContent,
-      pinned: false,
-      color: "bg-stone-800/70", // Default new note color
-    };
-    setNotes((prevNotes) => [newNote, ...prevNotes]);
-    setNewNoteTitle("");
-    setNewNoteContent("");
-    // setIsTakeNoteFocused(false); // Keep it focused if they want to add another quickly
+    createNoteMutation.mutate(
+      {
+        title: newNoteTitle || "Untitled Scroll", // Default title
+        content: newNoteContent,
+        // pinned: false, // API will set defaults or handle this
+        // color: "bg-stone-800/70", // API will set defaults or handle this
+      },
+      {
+        onSuccess: () => {
+          setNewNoteTitle("");
+          setNewNoteContent("");
+          // setIsTakeNoteFocused(false); // Optional: Keep focused
+        },
+        onError: (error) => {
+          console.error("Failed to add note:", error);
+          // TODO: Show user feedback, e.g., toast notification
+        },
+      },
+    );
   };
 
   const handleDeleteNote = (id: string) => {
-    setNotes(notes.filter((note) => note.id !== id));
+    deleteNoteMutation.mutate(id, {
+      onError: (error) => {
+        console.error("Failed to delete note:", error);
+        // TODO: User feedback
+      },
+    });
   };
 
   const togglePinNote = (id: string) => {
-    setNotes(notes.map((note) => (note.id === id ? { ...note, pinned: !note.pinned } : note)));
+    const noteToUpdate = notes.find((n) => n.id === id);
+    if (!noteToUpdate) return;
+
+    updateNoteMutation.mutate(
+      {
+        noteId: id,
+        payload: { pinned: !noteToUpdate.pinned },
+      },
+      {
+        onError: (error) => {
+          console.error("Failed to pin note:", error);
+          // TODO: User feedback
+        },
+      },
+    );
   };
 
   const toggleTheme = () => {
     setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
   };
 
-  const filteredNotes = notes
+  const filteredNotes = (notes || []) // Ensure notes is not undefined
     .filter(
       (note) =>
-        note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        note.title
+          ?.toLowerCase()
+          .includes(searchTerm.toLowerCase()) || // title can be undefined
         note.content.toLowerCase().includes(searchTerm.toLowerCase()),
     )
-    .sort((a, b) => (b.pinned === a.pinned ? 0 : b.pinned ? -1 : 1)); // Pinned notes first
+    // Pinned notes first, then by updatedAt (newest first) or createdAt if updatedAt is not available
+    .sort((a, b) => {
+      if (a.pinned !== b.pinned) {
+        return a.pinned ? -1 : 1;
+      }
+      const dateA = new Date(a.updatedAt || a.createdAt).getTime();
+      const dateB = new Date(b.updatedAt || b.createdAt).getTime();
+      return dateB - dateA;
+    });
 
   // Add Google Fonts
   useEffect(() => {
@@ -138,6 +181,26 @@ export default function GothicPage() {
     buttonText: theme === "dark" ? "text-stone-200" : "text-amber-50",
   };
 
+  if (isLoadingNotes) {
+    return (
+      <div
+        className={`flex justify-center items-center h-screen ${currentThemeColors.bgBody} ${currentThemeColors.textPrimary}`}
+      >
+        Loading scrolls...
+      </div>
+    );
+  }
+
+  if (notesError) {
+    return (
+      <div
+        className={`flex justify-center items-center h-screen ${currentThemeColors.bgBody} text-red-500`}
+      >
+        Error fetching scrolls: {notesError.message}
+      </div>
+    );
+  }
+
   return (
     <div
       className={`flex flex-col h-screen font-['Crimson_Text',_serif] ${currentThemeColors.bgBody} ${currentThemeColors.textPrimary} overflow-hidden`}
@@ -165,7 +228,10 @@ export default function GothicPage() {
             className={`flex items-center w-full h-10 ${currentThemeColors.searchBg} rounded-lg border border-transparent focus-within:border-red-700 focus-within:${currentThemeColors.searchFocusBg} transition-all`}
           >
             <button
-              type="submit"
+              type="button"
+              onClick={() => {
+                /* Implement search logic if needed */
+              }}
               className={`p-2 ${currentThemeColors.iconColor} ${currentThemeColors.iconHover}`}
             >
               <IconWrapper icon={Search} size={20} />
@@ -349,9 +415,10 @@ export default function GothicPage() {
                         <NoteCard
                           key={note.id}
                           note={note}
-                          onDelete={handleDeleteNote}
-                          onPin={togglePinNote}
+                          onDelete={() => handleDeleteNote(note.id)}
+                          onPin={() => togglePinNote(note.id)}
                           colors={currentThemeColors}
+                          theme={theme}
                         />
                       ))}
                   </div>
@@ -371,9 +438,10 @@ export default function GothicPage() {
                         <NoteCard
                           key={note.id}
                           note={note}
-                          onDelete={handleDeleteNote}
-                          onPin={togglePinNote}
+                          onDelete={() => handleDeleteNote(note.id)}
+                          onPin={() => togglePinNote(note.id)}
                           colors={currentThemeColors}
+                          theme={theme}
                         />
                       ))}
                   </div>

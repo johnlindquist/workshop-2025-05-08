@@ -138,6 +138,9 @@ dist
 # Cloudflare Wrangler
 .wrangler/
 
+# Monorepo package build outputs
+packages/*/dist
+
 # Temporary files
 tmp/
 **/tmp/

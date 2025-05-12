@@ -1,4 +1,4 @@
-import type { Note } from "@/types/note";
+import type { Note } from "@repo/types";
 import { AlertTriangle, Archive, Lock, LucideProps, Palette, Trash2 } from "lucide-react";
 // apps/web/components/gothic/NoteCard.tsx
 import React, { useState } from "react";
@@ -10,9 +10,10 @@ type NoteCardProps = {
   onDelete: (id: string) => void;
   onPin: (id: string) => void;
   colors: Record<string, string>;
+  theme: string;
 };
 
-export const NoteCard = ({ note, onDelete, onPin, colors }: NoteCardProps) => {
+export const NoteCard = ({ note, onDelete, onPin, colors, theme }: NoteCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

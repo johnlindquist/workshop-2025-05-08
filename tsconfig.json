@@ -1,9 +1,16 @@
 {
-  "files": [],
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@repo/types": ["packages/types/src"],
+      "@/*": ["apps/web/*"] // Assuming this might be needed for consistency
+    }
+  },
+  "files": [], // Use references instead of including all files globally
   "references": [
-    { "path": "./apps" },
-    { "path": "./backend" },
-    { "path": "./packages" },
-    { "path": "./libs" }
+    { "path": "./packages/types" },
+    { "path": "./apps/web" },
+    { "path": "./backend" } // Add other workspaces as needed
   ]
 }
